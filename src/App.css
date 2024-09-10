@@ -115,11 +115,19 @@
 }
 
                                   /**** Chat History ****/
+.chatHistory{
+  margin: 5vw 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
 .chatTitles{
-  /* text-align: start; */
-  background-color: salmon;
+  text-align: left;
   height: 2vw;
+  padding: 1vw;
   color: white;
+}
+.chatTitles:hover{
+  background-color: #03346E;
 }
                                   /**** Chat Categories ****/
 .catgs{
@@ -135,7 +143,7 @@
   position: relative;
   height: 7vw;
   width: 7vw;
-  background-color: white;
+  background-color: lightblue;
   margin: 1vw;
   text-align: center;
 }

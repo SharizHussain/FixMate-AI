@@ -9,21 +9,25 @@ export default function Chats({ prop }) {
     { title: "Who is known as Bhaijaan", description: 'ailsdjflkjasdklfj' }
   ]);
 
-  const [dummyCatgs, setDummyCatgs] = useState([{ img: "", title: "College" },{ img: "", title: "Cooking" },{ img: "", title: "Movie" }, { img: "", title: "Web" }])
+  const [dummyCatgs, setDummyCatgs] = useState([{ img: "", title: "College" }, { img: "", title: "Cooking" }, { img: "", title: "Movie" }, { img: "", title: "Web" }])
   return (
     <>
       {
         prop === "Chat History" ?
 
-          dummyHistory.map((e, index) => (
-            <div key={index} className='chatTitles'>{e.title}</div>
-          ))
+          <div className='chatHistory'>
+            {
+              dummyHistory.map((e, index) => (
+                <div key={index} className='chatTitles'>{e.title}</div>
+              ))
+            }
+          </div>
           :
           <div className='catgs'>
             {
               dummyCatgs.map((e, index) => (
                 <div key={index} className='chatCatgs'>
-                  <img src="" alt="" className='catgsImg'/>
+                  <img src="" alt="" className='catgsImg' />
                   <div className='catgsTitle'>{e.title}</div>
                 </div>
               ))
