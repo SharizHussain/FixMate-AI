@@ -1,42 +1,178 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+*{
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+                                /**** Header ****/
+
+.header{
+  position: absolute;
+  height: 5vw;
+  width: 100%;
+  background-color: #021526;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #03346E;
+  z-index: -10;
+}
+
+.header>.navLeft{
+  position: relative;
+  font-size: 3vw;
+  color: black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-left: -10vw;
+}
+.navLeft>.icon{
+  position: absolute;
+  width: 4vw;
+  margin: 0 0 0 0vw;
+  z-index: 11;
+}
+.navLeft>.title{
+  position: absolute;
+  width: 15vw;
+  margin: 0 0 0 0;
+  border-radius: 5px;
+}
+
+.header>.navRight{
+  position: absolute;
+  height: 4vw;
+  width: 12%;
+  /* background-color: red; */
+  margin-left: 85%;
+}
+
+                                /**** Sidebar ****/
+
+.sidebar{
+  position: absolute;
+  height: 100vh;
+  width: 18vw;
+  background-color: #021526;
+  border-right: 5px solid #03346E; 
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar>img{
+  position: absolute;
+  width: 3.2vw;
+  height: 3.4vw;
+  margin: 14px 0 0 2px;
+  left: 0;
+}
+
+.currentMenu{
+  cursor: default;
+  font-size: 1.7vw;
+  padding: 5px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  margin-top: 15px;
+  margin-left: 3vw;
+}
+
+.menuTabs{
+  width: 100%;
+  font-size: 1.5vw;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  margin-top: 5vw;
+}
+.menuTabs>div{
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 4vw;
+}
+.menuTabs>div:hover{
+  background-color: #03346E;
+}
+.menuTabs>div>span{
+  position: absolute;
+  margin-left: 5vw;
+  margin-top: 1vw;
+}
+.icons{
+  position: absolute;
+  width: 3vw;
+  background-color: white;
+  margin: 0.5vw 0 0 1vw;
+  border-radius: 50%;
+}
+
+                                  /**** Chat History ****/
+.chatTitles{
+  /* text-align: start; */
+  background-color: salmon;
+  height: 2vw;
+  color: white;
+}
+                                  /**** Chat Categories ****/
+.catgs{
+  height: auto;
+  width: 100%;
+  color: white;
+  margin: 5vw 0 0 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.chatCatgs{
+  position: relative;
+  height: 7vw;
+  width: 7vw;
+  background-color: white;
+  margin: 1vw;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.catgsImg{
+  position: absolute;
+  height: 4vw;
+  width: 4vw;
+  border-radius: 50%;
+  margin: -1.5vw 0 0 -2vw;
+  background-color: black;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.catgsTitle{
+  color: black;
+  margin: 3.5vw 0 0 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+                                  /**** Main ****/
+
+main{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0d2541;
+  z-index: -11;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.mainInput{
+  position: absolute;
+  width: 70%;
+  height: 3vw;
+  bottom: 3%;
+  margin-left: 24%;
+  font-size: 1.2vw;
+  background-color: #021526;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 2px solid white;
+  resize: none;
 }
