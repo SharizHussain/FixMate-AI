@@ -1,3 +1,18 @@
+:root{
+  --header-background-color: #021526;
+  --sidebar-background-color: #021526;
+  --border: #03346E;
+  --main-bg: #0D2541;
+  --color: white;
+}
+.lightMode{
+  --header-background-color: #f2f2f7;
+  --sidebar-background-color: #f2f2f7;
+  --border: #92B4EC;
+  --main-bg: #FFFFFF;
+  --color: black;
+}
+
 *{
   position: relative;
   margin: 0;
@@ -10,11 +25,11 @@
   position: absolute;
   height: 5vw;
   width: 100%;
-  background-color: #021526;
+  background-color: var(--header-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid #03346E;
+  border-bottom: 5px solid var(--border);
   z-index: -10;
 }
 
@@ -48,14 +63,19 @@
   margin-left: 85%;
 }
 
+.sun{
+  cursor: pointer;
+  margin: 1vw 0 0 2vw;
+}
+
                                 /**** Sidebar ****/
 
 .sidebar{
   position: absolute;
   height: 100vh;
   width: 18vw;
-  background-color: #021526;
-  border-right: 5px solid #03346E; 
+  background-color: var(--sidebar-background-color);
+  border-right: 5px solid var(--border); 
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -74,8 +94,8 @@
   cursor: default;
   font-size: 1.7vw;
   padding: 5px;
-  color: white;
-  border: 2px solid white;
+  color: var(--color);
+  border: 2px solid var(--color);
   border-radius: 10px;
   text-align: center;
   width: 70%;
@@ -86,7 +106,7 @@
 .menuTabs{
   width: 100%;
   font-size: 1.5vw;
-  color: whitesmoke;
+  color: var(--color);
   display: flex;
   flex-direction: column;
   gap: 3vw;
@@ -112,6 +132,30 @@
   background-color: white;
   margin: 0.5vw 0 0 1vw;
   border-radius: 50%;
+}
+
+.sidebarToggle{
+  position: absolute;
+  height: 2.5vw;
+  width: 5.5vw;
+  font-variant-caps: petite-caps;
+  border: none;
+  border-radius: 20px;
+  /* padding: 1vw 1vw; */
+  margin: 26vw 0 0 18vw;
+}
+.sidebarToggle>div{
+  height: 2vw;
+  width: 2vw;
+  background-color: black;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin: 0 0 0 3vw;
+  transition: 1s;
+}
+.toggleOff{
+  transform: translateX(-3vw);
+  transition: 1s;
 }
 
                                   /**** Chat History ****/
@@ -166,7 +210,7 @@ main{
   position: absolute;
   height: 100vh;
   width: 100vw;
-  background-color: #0d2541;
+  background-color: var(--main-bg);
   z-index: -11;
 }
 
