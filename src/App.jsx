@@ -7,6 +7,7 @@ import imgHistory from './assets/img/chat(1).png'
 import imgCatg from './assets/img/menu.png'
 import imgArchive from './assets/img/archive.png'
 import sunImg from './assets/img/sun.png'
+import sunImgLight from './assets/img/sunLight.png'
 import './App.css'
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
 
         <div className='navRight'>
           <div className='theme'>
-            <img src={sunImg} alt="" className='sun' onClick={()=>setDark(!dark)}/>
+            <img src={dark ? sunImg : sunImgLight} alt="" className='sun' onClick={()=>setDark(!dark)}/>
           </div>
           <div className='profile'></div>
         </div>
