@@ -69,6 +69,14 @@ function App() {
 
       <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={()=>setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
       </section>
+
+      <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"}`}>
+      <div className='miniMenuTabs'>
+            <img title='Chat History' onClick={() => {setMenu("Chat History"); setToggle(true)}} src={imgHistory} className='miniIcons'/>
+            <img title='Chat Categories' onClick={() => {setMenu("Categories"); setToggle(true)}} src={imgCatg} className='miniIcons'/>
+            <img title='Archives' onClick={() => {setMenu("Archives"); setToggle(true)}} src={imgArchive} className='miniIcons'/>
+        </div>
+      </section>
                                 
                               {/* Main */}
       <main className={`${dark ? "" : "lightMode"}`}>
