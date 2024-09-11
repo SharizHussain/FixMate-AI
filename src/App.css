@@ -8,7 +8,7 @@
 .lightMode{
   --header-background-color: #f2f2f7;
   --sidebar-background-color: #f2f2f7;
-  --border: #92B4EC;
+  --border: #03346E;
   --main-bg: #FFFFFF;
   --color: black;
 }
@@ -81,6 +81,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 1s;
+}
+.sidebarOff{
+  margin-left: -12vw;
 }
 
 .sidebar>img{
@@ -144,6 +148,10 @@
   border-radius: 20px;
   /* padding: 1vw 1vw; */
   margin: 26vw 0 0 18vw;
+  background-color: #3f8f3c;
+}
+.sidebarToggleOff{
+  background-color: rgb(202, 23, 23);
 }
 .sidebarToggle>div{
   height: 2vw;
@@ -169,7 +177,7 @@
   text-align: left;
   height: 2vw;
   padding: 1vw;
-  color: white;
+  color: var(--color);
 }
 .chatTitles:hover{
   background-color: #03346E;
@@ -222,10 +230,10 @@ main{
   bottom: 3%;
   margin-left: 24%;
   font-size: 1.2vw;
-  background-color: #021526;
-  color: white;
+  background-color: var(--header-background-color);
+  color: var(--color);
   padding: 5px 10px;
   border-radius: 20px;
-  border: 2px solid white;
+  border: 2px solid var(--color);
   resize: none;
 }

@@ -11,8 +11,9 @@ import sunImgLight from './assets/img/sunLight.png'
 import './App.css'
 
 function App() {
-  const [dark, setDark] = useState(true);
-  const [menu, setMenu] = useState("Menu")
+  const [dark, setDark] = useState(false);
+  const [menu, setMenu] = useState("Menu");
+  const [toggle, setToggle] = useState(true)
 
   useEffect(()=>{
     const currentMenu = document.querySelector('.currentMenu')
@@ -30,11 +31,6 @@ function App() {
   },[menu])
 
   
-  const togglebar = () =>{
-    const toggleBtn = document.querySelector('.toggleBtn')
-    toggleBtn.classList.toggle('toggleOff')
-  }
-
   return (
     <>
                               {/* Header */}
@@ -53,7 +49,7 @@ function App() {
       </header>
 
                               {/* Sidebar */}
-      <section className={`sidebar ${dark ? '' : "lightMode"}`}>
+      <section className={`sidebar ${dark ? '' : "lightMode"} ${toggle ? "" : "sidebarOff"}`}>
         <img src={backBtnImg} alt="" className='backBtn' onClick={()=>setMenu("Menu")}/>
         <div className={`currentMenu ${dark ? "" : "lightMode"}`}> {menu} </div>
 
@@ -71,7 +67,7 @@ function App() {
 </>
         }
 
-      <button className='sidebarToggle' onClick={togglebar}><div className='toggleBtn'></div></button>
+      <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={()=>setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
       </section>
                                 
                               {/* Main */}
