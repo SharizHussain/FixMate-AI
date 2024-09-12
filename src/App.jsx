@@ -34,6 +34,7 @@ function App() {
   return (
     <>
                               {/* Header */}
+      <div className='glassEffectHeader'></div>
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
           <img src={img} alt="icon" className='icon'/>
@@ -82,7 +83,7 @@ function App() {
                               {/* Main */}
       <main className={`${dark ? "" : "lightMode"}`}>
         {/* <input type="text" className='mainInput' placeholder='Type your query here....'/> */}
-        <textarea name="" id="" className='mainInput' placeholder='Type your query here....'></textarea>
+        <textarea name="" id="" className={`mainInput ${toggle ? "" : "mainInputTrans"}`} placeholder='Type your query here....'></textarea>
       </main>
 
                               {/* Footer*/}
