@@ -1,9 +1,11 @@
 :root {
-  --header-background-color: #021526;
-  --sidebar-background-color: #021526;
+  --header-background-color: "transparent";
+  --sidebar-background-color: "transparent";
   --border: #03346E;
-  --main-bg: #0D2541;
+  /* --main-bg: #0D2541; */
+  --main-bg: rgb(0, 0, 0, 0.9);
   --color: white;
+  --bg-image: url('./image.svg');
 }
 
 .lightMode {
@@ -128,8 +130,9 @@
   height: 4vw;
 }
 
-.menuTabs>div:hover {
-  background-color: #03346E;
+.menuTabs>div:hover{
+  /* background-color: #03346E; */
+  backdrop-filter: blur(50px);
 }
 
 .menuTabs>div>span {
@@ -176,6 +179,14 @@
 .toggleOff {
   transform: translateX(-3vw);
   transition: 1s;
+}
+
+.glassEffect{
+  position: absolute;
+  height: 100vh;
+  width: 18vw;
+  background-color: black;
+  z-index: -11;
 }
 
                                 /**** Chat History ****/
@@ -259,6 +270,10 @@
 
 main {
   position: absolute;
+  background: var(--bg-image);
+  background-size: cover;
+  background-repeat: repeat-y ;
+  background-position-y: -6vw;
   height: 100vh;
   width: 100vw;
   background-color: var(--main-bg);
@@ -272,10 +287,10 @@ main {
   bottom: 3%;
   margin-left: 24%;
   font-size: 1.2vw;
-  background-color: var(--header-background-color);
+  background-color: transparent;
   color: var(--color);
   padding: 5px 10px;
   border-radius: 20px;
-  border: 2px solid var(--color);
+  border: 1px solid var(--color);
   resize: none;
 }

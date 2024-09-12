@@ -11,7 +11,7 @@ import sunImgLight from './assets/img/sunLight.png'
 import './App.css'
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true)
 
@@ -55,11 +55,12 @@ function App() {
 
       {
 <>    
+        <div className='glassEffect'></div>
 {menu==="Menu" ?
         <div className='menuTabs'>
-            <div onClick={() => setMenu("Chat History")}> <img src={imgHistory} alt="" className='icons'/> <span> Chat History </span> </div>
-            <div onClick={() => setMenu("Categories")}> <img src={imgCatg} alt="" className='icons'/> <span> Chat Categories </span> </div>
-            <div onClick={() => setMenu("Archives")}> <img src={imgArchive} alt="" className='icons'/> <span> Archives </span></div>
+            <div className='menus' onClick={() => setMenu("Chat History")}> <img src={imgHistory} alt="" className='icons'/> <span> Chat History </span> </div>
+            <div className='menus' onClick={() => setMenu("Categories")}> <img src={imgCatg} alt="" className='icons'/> <span> Chat Categories </span> </div>
+            <div className='menus' onClick={() => setMenu("Archives")}> <img src={imgArchive} alt="" className='icons'/> <span> Archives </span></div>
         </div>
 :
         <Chats prop={menu}/>
