@@ -40,7 +40,7 @@ function App() {
 
     clickedWallpaper.forEach((img)=>{
       img.addEventListener('click',(e)=>{
-        if(e.target.src=="http://error-bot-1.vercel.app/src/assets/img/pexels-pripicart-620337.jpg"){
+        if(e.target.src=="https://error-bot-1.vercel.app/src/assets/img/pexels-pripicart-620337.jpg"){
           menuTabs.style.color = "black";
         }
         setCurrentWallpaper(e.target.src);
