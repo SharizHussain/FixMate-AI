@@ -8,12 +8,16 @@ import imgCatg from './assets/img/menu.png'
 import imgArchive from './assets/img/archive.png'
 import sunImg from './assets/img/sun.png'
 import sunImgLight from './assets/img/sunLight.png'
+import theme1 from './assets/img/1000_F_602015518_x8XPfvJVTAyBasPwNigCmJNDBesSxqwB-transformed.jpeg'
+import theme2 from './assets/img/photo-1557626204-59dd03fd2d31.jpeg'
+import theme3 from './assets/img/pexels-pripicart-620337.jpg'
 import './App.css'
 
 function App() {
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
-  const [toggle, setToggle] = useState(true)
+  const [toggle, setToggle] = useState(true);
+  const [currentWallpaper, setCurrentWallpaper] = useState("none");
 
   useEffect(()=>{
     const currentMenu = document.querySelector('.currentMenu')
@@ -30,6 +34,22 @@ function App() {
     }
   },[menu])
 
+  useEffect(()=>{
+    const clickedWallpaper = document.querySelectorAll('.wallpapers img')
+    const menuTabs = document.querySelector('.menuTabs');
+
+    clickedWallpaper.forEach((img)=>{
+      img.addEventListener('click',(e)=>{
+        if(e.target.src==="http://localhost:5173/src/assets/img/pexels-pripicart-620337.jpg"){
+          menuTabs.style.color = "black";
+        }
+        setCurrentWallpaper(e.target.src);
+        setDark(true)
+      })
+    })
+
+  },[])
+
   
   return (
     <>
@@ -43,7 +63,22 @@ function App() {
 
         <div className='navRight'>
           <div className='theme'>
-            <img src={dark ? sunImg : sunImgLight} alt="" className='sun' onClick={()=>setDark(!dark)}/>
+
+            <img src={dark ? sunImg : sunImgLight} alt="" className='sun'/>
+
+            <div className='themeMenu'>
+              <div className='themeModes'>
+                <div onClick={()=>{setDark(true); setCurrentWallpaper("none")}}>Dark</div>
+                <div onClick={()=>{setDark(false); setCurrentWallpaper("none")}}>Light</div>
+                <div onClick={()=>{setDark(true); setCurrentWallpaper("none")}}>Reset</div>
+              </div>
+              <div className='wallpapers'>
+              <img src={theme1} alt="" />
+              <img src={theme2} alt="" />
+              <img src={theme3} alt="" />
+              </div>
+            </div>
+
           </div>
           <div className='profile'></div>
         </div>
@@ -72,7 +107,7 @@ function App() {
       <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={()=>setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
       </section>
 
-      <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"}`}>
+      <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
       <div className='miniMenuTabs'>
             <img title='Chat History' onClick={() => {setMenu("Chat History"); setToggle(true)}} src={imgHistory} className='miniIcons'/>
             <img title='Chat Categories' onClick={() => {setMenu("Categories"); setToggle(true)}} src={imgCatg} className='miniIcons'/>
@@ -82,6 +117,7 @@ function App() {
                                 
                               {/* Main */}
       <main className={`${dark ? "" : "lightMode"}`}>
+        <img src={currentWallpaper} alt="" className="appliedWallpaper"/>
         {/* <input type="text" className='mainInput' placeholder='Type your query here....'/> */}
         <textarea name="" id="" className={`mainInput ${toggle ? "" : "mainInputTrans"}`} placeholder='Type your query here....'></textarea>
       </main>
