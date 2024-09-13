@@ -7,6 +7,7 @@
   --main-bg: rgb(0, 0, 0, 0.9);
   --color: white;
   --bg-image: url('./image.svg');
+  --sid-color: white;
 }
 
 .lightMode {
@@ -18,13 +19,17 @@
   --color: black;
 }
 
+.sidColor {
+  --sid-color: black;
+}
+
 * {
   position: relative;
   margin: 0;
   padding: 0;
 }
 
-                                /**** Header ****/
+/**** Header ****/
 
 .header {
   position: absolute;
@@ -79,7 +84,7 @@
   backdrop-filter: blur(20px);
 }
 
-.glassEffectHeader{
+.glassEffectHeader {
   position: absolute;
   height: 5vw;
   width: 100%;
@@ -87,7 +92,7 @@
   z-index: -11;
 }
 
-.themeMenu{
+.themeMenu {
   display: none;
   position: absolute;
   height: 20vw;
@@ -97,19 +102,23 @@
   border-radius: 10px;
   margin: -1vw 0 0 -18vw;
 }
-.sun:hover + .themeMenu{
+
+.sun:hover+.themeMenu {
   display: block;
 }
-.themeMenu:hover{
+
+.themeMenu:hover {
   display: block;
 }
-.themeModes{
+
+.themeModes {
   display: flex;
   justify-content: space-evenly;
   /* gap: 3vw; */
   padding: 2vw 0 0 0;
 }
-.themeModes div{
+
+.themeModes div {
   cursor: pointer;
   /* background-color: #03346E; */
   border: 2px solid black;
@@ -117,26 +126,29 @@
   padding: 1vw;
   color: var(--color);
 }
-.wallpapers{
+
+.wallpapers {
   display: flex;
   flex-wrap: wrap;
   gap: 2vw;
   padding: 2vw;
 }
-.wallpapers>img{
+
+.wallpapers>img {
   height: 7vw;
   width: 7vw;
   object-fit: cover;
 }
 
-.appliedWallpaper{
+.appliedWallpaper {
   position: absolute;
   height: 100vh;
   width: 100vw;
   object-fit: cover;
   /* object-position: center; */
 }
-                                /**** Sidebar ****/
+
+/**** Sidebar ****/
 
 .sidebar {
   position: absolute;
@@ -178,7 +190,7 @@
 .menuTabs {
   width: 100%;
   font-size: 1.5vw;
-  color: var(--color);
+  color: var(--sid-color);
   display: flex;
   flex-direction: column;
   gap: 3vw;
@@ -192,7 +204,7 @@
   height: 4vw;
 }
 
-.menuTabs>div:hover{
+.menuTabs>div:hover {
   /* background-color: #03346E; */
   backdrop-filter: brightness(80%);
 }
@@ -243,7 +255,7 @@
   transition: 1s;
 }
 
-.glassEffect{
+.glassEffect {
   position: absolute;
   height: 100vh;
   width: 18vw;
@@ -251,7 +263,7 @@
   z-index: -11;
 }
 
-                                /**** Chat History ****/
+/**** Chat History ****/
 .chatHistory {
   margin: 5vw 0 0 0;
   display: flex;
@@ -269,7 +281,7 @@
   background-color: #03346E;
 }
 
-                                /**** Chat Categories ****/
+/**** Chat Categories ****/
 .catgs {
   height: auto;
   width: 100%;
@@ -303,11 +315,11 @@
   position: absolute;
   color: black;
   top: 70%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-                                /**** Mini Sidebar ****/
+/**** Mini Sidebar ****/
 .miniSidebar {
   position: absolute;
   z-index: 1;
@@ -317,28 +329,31 @@
   margin: 0 0 0 -6vw;
   transition: 1s;
 }
-.miniSidebarCome{
+
+.miniSidebarCome {
   margin: 0vw;
 }
-.miniMenuTabs{
+
+.miniMenuTabs {
   display: flex;
   flex-direction: column;
   margin: 2vw 0 0 1vw;
   gap: 3vw;
 }
-.miniMenuTabs>img{
+
+.miniMenuTabs>img {
   cursor: pointer;
   background-color: rgb(238, 235, 235);
   width: 4vw;
 }
 
-                                /**** Main ****/
+/**** Main ****/
 
 main {
   position: absolute;
   background: var(--bg-image);
   background-size: cover;
-  background-repeat: repeat-y ;
+  background-repeat: repeat-y;
   background-position-y: -10vw;
   height: 100vh;
   width: 100vw;
@@ -361,6 +376,7 @@ main {
   resize: none;
   transition: 1s ease-in-out;
 }
-.mainInputTrans{
+
+.mainInputTrans {
   margin-left: 17%;
 }

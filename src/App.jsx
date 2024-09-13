@@ -18,6 +18,7 @@ function App() {
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
   const [currentWallpaper, setCurrentWallpaper] = useState("none");
+  const [sidColor, setSidColor] = useState(true);
 
   useEffect(()=>{
     const currentMenu = document.querySelector('.currentMenu')
@@ -36,15 +37,17 @@ function App() {
 
   useEffect(()=>{
     const clickedWallpaper = document.querySelectorAll('.wallpapers img')
-    const menuTabs = document.querySelector('.menuTabs');
 
     clickedWallpaper.forEach((img)=>{
       img.addEventListener('click',(e)=>{
-        if(e.target.src=="https://error-bot-1.vercel.app/src/assets/img/pexels-pripicart-620337.jpg"){
-          menuTabs.style.color = "black";
+        if(e.target.className=="theme3"){
+          setSidColor(false)
         }
-        setCurrentWallpaper(e.target.src);
+        else{
+          setSidColor(true)
+        }
         setDark(true)
+        setCurrentWallpaper(e.target.src);
       })
     })
 
@@ -68,14 +71,14 @@ function App() {
 
             <div className='themeMenu'>
               <div className='themeModes'>
-                <div onClick={()=>{setDark(true); setCurrentWallpaper("none")}}>Dark</div>
-                <div onClick={()=>{setDark(false); setCurrentWallpaper("none")}}>Light</div>
-                <div onClick={()=>{setDark(true); setCurrentWallpaper("none")}}>Reset</div>
+                <div onClick={()=>{setDark(true);  setSidColor(true); setCurrentWallpaper("none")}}>Dark</div>
+                <div onClick={()=>{setDark(false); setSidColor(false); setCurrentWallpaper("none")}}>Light</div>
+                <div onClick={()=>{setDark(true);  setSidColor(true); setCurrentWallpaper("none")}}>Reset</div>
               </div>
               <div className='wallpapers'>
-              <img src={theme1} alt="" />
-              <img src={theme2} alt="" />
-              <img src={theme3} alt="" />
+              <img src={theme1} alt="" className='theme1'/>
+              <img src={theme2} alt="" className='theme2'/>
+              <img src={theme3} alt="" className='theme3'/>
               </div>
             </div>
 
@@ -93,7 +96,7 @@ function App() {
 <>    
         <div className='glassEffect'></div>
 {menu==="Menu" ?
-        <div className='menuTabs'>
+        <div className={`menuTabs ${sidColor ? "" : "sidColor"}`}>
             <div className='menus' onClick={() => setMenu("Chat History")}> <img src={imgHistory} alt="" className='icons'/> <span> Chat History </span> </div>
             <div className='menus' onClick={() => setMenu("Categories")}> <img src={imgCatg} alt="" className='icons'/> <span> Chat Categories </span> </div>
             <div className='menus' onClick={() => setMenu("Archives")}> <img src={imgArchive} alt="" className='icons'/> <span> Archives </span></div>
