@@ -7,7 +7,7 @@
   --main-bg: rgb(0, 0, 0, 0.9);
   --color: white;
   --bg-image: url('./image.svg');
-  --sid-color: white;
+  --sid-icons-hover: black;
 }
 
 .lightMode {
@@ -17,10 +17,7 @@
   --border: #03346E;
   --main-bg: #FFFFFF;
   --color: black;
-}
-
-.sidColor {
-  --sid-color: black;
+  --sid-icons-hover: white;
 }
 
 * {
@@ -163,7 +160,7 @@
 }
 
 .sidebarOff {
-  margin-left: -12vw;
+  margin-left: -15vw;
 }
 
 .sidebar>img {
@@ -190,23 +187,28 @@
 .menuTabs {
   width: 100%;
   font-size: 1.5vw;
-  color: var(--sid-color);
+  color: var(--color);
   display: flex;
   flex-direction: column;
-  gap: 3vw;
   margin-top: 5vw;
+  gap: 2.8vw;
 }
 
 .menuTabs>div {
-  position: relative;
   cursor: pointer;
   width: 100%;
   height: 4vw;
+  transition: 0.3s;
+  padding: 2px;
+  font-weight: 50%;
 }
 
-.menuTabs>div:hover {
-  /* background-color: #03346E; */
-  backdrop-filter: brightness(80%);
+.menuTabs>div:hover{
+  transform: scale(0.9);
+  background-color: var(--color);
+  color: var(--sid-icons-hover);
+  backdrop-filter: brightness(1%);
+  border-radius: 20px;
 }
 
 .menuTabs>div>span {
@@ -218,9 +220,9 @@
 .icons {
   position: absolute;
   width: 3vw;
-  background-color: white;
   margin: 0.5vw 0 0 1vw;
-  /* border-radius: 50%; */
+  background-color: black;
+  border-radius: 20%;
 }
 
 .sidebarToggle {
@@ -325,12 +327,13 @@
   z-index: 1;
   height: 100vh;
   width: 6vw;
-  background-color: var(--miniSidebar-bg);
+  background-color: black;
   margin: 0 0 0 -6vw;
   transition: 1s;
 }
 
 .miniSidebarCome {
+  border-right: 5px solid #03346E;
   margin: 0vw;
 }
 
@@ -343,8 +346,14 @@
 
 .miniMenuTabs>img {
   cursor: pointer;
-  background-color: rgb(238, 235, 235);
   width: 4vw;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.miniMenuTabs>img:hover{
+  border-radius: 0%;
+  background-color: white;
 }
 
 /**** Main ****/
@@ -354,7 +363,7 @@ main {
   background: var(--bg-image);
   background-size: cover;
   background-repeat: repeat-y;
-  background-position-y: -10vw;
+  background-position-y: 0vw;
   height: 100vh;
   width: 100vw;
   background-color: var(--main-bg);
