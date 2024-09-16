@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Chats from './Chats'
 import './App.css'
 import {icons,themes} from './Data'
@@ -9,7 +9,8 @@ function App() {
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
-  const [currentWallpaper, setCurrentWallpaper] = useState(" ");
+  const [currentWallpaper, setCurrentWallpaper] = useState(themes.theme1);
+  const first = useRef("")
   const [sidColor, setSidColor] = useState(true);
   const [miniIcons, setMiniIcons] = useState([true, true, true]);
 
@@ -57,10 +58,10 @@ function App() {
     <>
                                 {/* Header */}
 
-      <div className='glassEffectHeader'></div>
+      {/*  <div className='glassEffectHeader'></div>  */}
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
-          <img src={icons.aiIcon} alt="icon" className='icon' />
+          {/* <img src={icons.aiIcon} alt="icon" className='icon' /> */}
           <img src={icons.logo} alt="title" className='title' />
         </div>
 
@@ -71,9 +72,9 @@ function App() {
 
             <div className='themeMenu'>
               <div className='themeModes'>
-                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none") }}>Dark</div>
+                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none"); first.current.style.display="none"}}>Dark</div>
                 <div onClick={() => { setDark(false); setSidColor(false); setCurrentWallpaper("none") }}>Light</div>
-                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none") }}>Reset</div>
+                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper(themes.theme1) }}>Reset</div>
               </div>
               <div className='wallpapers'>
                 <img src={themes.theme1} alt="" className='theme1' />
@@ -83,19 +84,18 @@ function App() {
             </div>
 
           </div>
-          <div className='profile'></div>
+          <div className='profile'></div> 
         </div>
       </header>
 
                                   {/* Sidebar */}
-
+ 
       <section className={`sidebar ${dark ? '' : "lightMode"} ${toggle ? "" : "sidebarOff"}`}>
         <img src={icons.backBtnImg} alt="" className='backBtn' onClick={() => setMenu("Menu")} />
         <div className={`currentMenu ${dark ? "" : "lightMode"} ${sidColor ? "" : "lightMode"}`}> {menu} </div>
 
         {
           <>
-            <div className='glassEffect'></div>
             {menu === "Menu" ?
               <div className={`menuTabs ${sidColor ? "" : "lightMode"}`}>
                 <div className='menus' onClick={() => setMenu("Chat History")}> <img src={icons.imgHistory} alt="" className='icons' /> <span> Chat History </span> </div>
@@ -108,12 +108,12 @@ function App() {
           </>
         }
 
-        <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
+        {/* <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button> */}
       </section>
 
                                   {/* Mini Sidebar */}
 
-      <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
+   {/*  <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
         <div className='miniMenuTabs'>
           <img
             title="Chat History"
@@ -179,8 +179,27 @@ function App() {
 
                                       {/* Main */}
 
-      <main className={`${dark ? "" : "lightMode"}`}>
-        <img src={currentWallpaper} alt="" className="appliedWallpaper" />
+     <main className={`${dark ? "" : "lightMode"}`}>
+        <img src={currentWallpaper} alt="" className="appliedWallpaper" ref={first}/>
+
+        <div className='chatArea'>
+
+        <div className='question_in_chat'>
+            <img src="" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nobis iusto id voluptatibus nesciunt molestiae asperiores repellendus laudantium dolores doloremque provident deserunt veniam, amet vitae maiores eligendi? Distinctio, est a.
+            </p>
+          </div>
+
+           <div className='answer_in_chat'>
+            <img src="" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. Minus labore repellat quia, dolorem nam explicabo temporibus quo officiis?
+            </p>
+          </div>
+
+        </div>
+
         <textarea name="" id="" className={`mainInput ${toggle ? "" : "mainInputTrans"}`} placeholder='Type your query here....'></textarea>
       </main>
 
