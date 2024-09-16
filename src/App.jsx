@@ -48,6 +48,7 @@ function App() {
         }
         setDark(true)
         setCurrentWallpaper(e.target.src);
+        first.current.style.display = "block"
       })
     })
 
@@ -74,7 +75,7 @@ function App() {
               <div className='themeModes'>
                 <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none"); first.current.style.display="none"}}>Dark</div>
                 <div onClick={() => { setDark(false); setSidColor(false); setCurrentWallpaper("none") }}>Light</div>
-                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper(themes.theme1) }}>Reset</div>
+                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper(themes.theme1); first.current.style.display="block"}}>Reset</div>
               </div>
               <div className='wallpapers'>
                 <img src={themes.theme1} alt="" className='theme1' />
