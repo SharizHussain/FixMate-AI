@@ -1,31 +1,22 @@
 import { useEffect, useState } from 'react'
 import Chats from './Chats'
-import img from './assets/img/artificial-intelligence.png'
-import img2 from './assets/img/Screenshot from 2024-09-09 14-52-46.png'
-import backBtnImg from './assets/img/undo.png'
-import imgHistory from './assets/img/chat(1).svg'
-import imgCatg from './assets/img/menu.svg'
-import imgArchive from './assets/img/archive.svg'
-
-import imgHistoryBlack from './assets/img/chat_black.svg'
-import imgCatgBlack from './assets/img/menu_black.svg'
-import imgArchiveBlack from './assets/img/archive_black.svg'
-
-import sunImg from './assets/img/sun.png'
-import sunImgLight from './assets/img/sunLight.png'
-import theme1 from './assets/img/1000_F_602015518_x8XPfvJVTAyBasPwNigCmJNDBesSxqwB-transformed.jpeg'
-import theme2 from './assets/img/photo-1557626204-59dd03fd2d31.jpeg'
-import theme3 from './assets/img/pexels-pripicart-620337.jpg'
 import './App.css'
+import {icons,themes} from './Data'
 
 function App() {
+                          // All States initialized
+
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
-  const [currentWallpaper, setCurrentWallpaper] = useState("none");
+  const [currentWallpaper, setCurrentWallpaper] = useState(" ");
   const [sidColor, setSidColor] = useState(true);
   const [miniIcons, setMiniIcons] = useState([true, true, true]);
 
+  
+                        // Toggle mechanism for Back button in sidebar menu 
+                        // by default back button is not visible but when someone click
+                        // on any menuTabs then back button will visible
   useEffect(() => {
     const currentMenu = document.querySelector('.currentMenu')
     const back = document.querySelector('.sidebar>img')
@@ -40,6 +31,8 @@ function App() {
       currentMenu.style.marginLeft = "3vw"
     }
   }, [menu])
+
+                      // Theme wallpapers change mechanism
 
   useEffect(() => {
     const clickedWallpaper = document.querySelectorAll('.wallpapers img')
@@ -62,18 +55,19 @@ function App() {
 
   return (
     <>
-      {/* Header */}
+                                {/* Header */}
+
       <div className='glassEffectHeader'></div>
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
-          <img src={img} alt="icon" className='icon' />
-          <img src={img2} alt="title" className='title' />
+          <img src={icons.aiIcon} alt="icon" className='icon' />
+          <img src={icons.logo} alt="title" className='title' />
         </div>
 
         <div className='navRight'>
           <div className='theme'>
 
-            <img src={dark ? sunImg : sunImgLight} alt="" className='sun' />
+            <img src={dark ? themes.sunImg : themes.sunImgLight} alt="" className='sun' />
 
             <div className='themeMenu'>
               <div className='themeModes'>
@@ -82,9 +76,9 @@ function App() {
                 <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none") }}>Reset</div>
               </div>
               <div className='wallpapers'>
-                <img src={theme1} alt="" className='theme1' />
-                <img src={theme2} alt="" className='theme2' />
-                <img src={theme3} alt="" className='theme3' />
+                <img src={themes.theme1} alt="" className='theme1' />
+                <img src={themes.theme2} alt="" className='theme2' />
+                <img src={themes.theme3} alt="" className='theme3' />
               </div>
             </div>
 
@@ -93,9 +87,10 @@ function App() {
         </div>
       </header>
 
-      {/* Sidebar */}
+                                  {/* Sidebar */}
+
       <section className={`sidebar ${dark ? '' : "lightMode"} ${toggle ? "" : "sidebarOff"}`}>
-        <img src={backBtnImg} alt="" className='backBtn' onClick={() => setMenu("Menu")} />
+        <img src={icons.backBtnImg} alt="" className='backBtn' onClick={() => setMenu("Menu")} />
         <div className={`currentMenu ${dark ? "" : "lightMode"} ${sidColor ? "" : "lightMode"}`}> {menu} </div>
 
         {
@@ -103,9 +98,9 @@ function App() {
             <div className='glassEffect'></div>
             {menu === "Menu" ?
               <div className={`menuTabs ${sidColor ? "" : "lightMode"}`}>
-                <div className='menus' onClick={() => setMenu("Chat History")}> <img src={imgHistory} alt="" className='icons' /> <span> Chat History </span> </div>
-                <div className='menus' onClick={() => setMenu("Categories")}> <img src={imgCatg} alt="" className='icons' /> <span> Chat Categories </span> </div>
-                <div className='menus' onClick={() => setMenu("Archives")}> <img src={imgArchive} alt="" className='icons' /> <span> Archives </span></div>
+                <div className='menus' onClick={() => setMenu("Chat History")}> <img src={icons.imgHistory} alt="" className='icons' /> <span> Chat History </span> </div>
+                <div className='menus' onClick={() => setMenu("Categories")}> <img src={icons.imgCatg} alt="" className='icons' /> <span> Chat Categories </span> </div>
+                <div className='menus' onClick={() => setMenu("Archives")}> <img src={icons.imgArchive} alt="" className='icons' /> <span> Archives </span></div>
               </div>
               :
               <Chats prop={menu} />
@@ -115,6 +110,8 @@ function App() {
 
         <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
       </section>
+
+                                  {/* Mini Sidebar */}
 
       <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
         <div className='miniMenuTabs'>
@@ -134,7 +131,7 @@ function App() {
               newIcons[0] = true;
               setMiniIcons(newIcons);
             }}
-            src={miniIcons[0] ? imgHistory : imgHistoryBlack}
+            src={miniIcons[0] ? icons.imgHistory : icons.imgHistoryBlack}
             className="miniIcons"
           />
 
@@ -154,7 +151,7 @@ function App() {
               newIcons[1] = true;
               setMiniIcons(newIcons);
             }}
-            src={miniIcons[1] ? imgCatg : imgCatgBlack}
+            src={miniIcons[1] ? icons.imgCatg : icons.imgCatgBlack}
             className="miniIcons"
           />
 
@@ -174,21 +171,21 @@ function App() {
               newIcons[2] = true;
               setMiniIcons(newIcons);
             }}
-            src={miniIcons[2] ? imgArchive : imgArchiveBlack}
+            src={miniIcons[2] ? icons.imgArchive : icons.imgArchiveBlack}
             className="miniIcons"
           />
         </div>
       </section>
 
-      {/* Main */}
+                                      {/* Main */}
+
       <main className={`${dark ? "" : "lightMode"}`}>
         <img src={currentWallpaper} alt="" className="appliedWallpaper" />
-        {/* <input type="text" className='mainInput' placeholder='Type your query here....'/> */}
         <textarea name="" id="" className={`mainInput ${toggle ? "" : "mainInputTrans"}`} placeholder='Type your query here....'></textarea>
       </main>
 
-      {/* Footer*/}
-      <footer></footer>
+                                    {/* Footer*/}
+      {/* <footer></footer> */}
     </>
   )
 }

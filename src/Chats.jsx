@@ -27,7 +27,7 @@ export default function Chats({ prop }) {
             {
               dummyCatgs.map((e, index) => (
                 <div key={index} className='chatCatgs'>
-                  <img src="" alt="" className='catgsImg' />
+                  <img src=" " alt="" className='catgsImg' />
                   <div className='catgsTitle'>{e.title}</div>
                 </div>
               ))
