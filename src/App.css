@@ -1,3 +1,7 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 :root {
   --header-background-color: "transparent";
   --sidebar-background-color: "transparent";
@@ -20,10 +24,30 @@
   --sid-icons-hover: white;
 }
 
+
+
 * {
   position: relative;
   margin: 0;
   padding: 0;
+}
+
+.loader{
+  height: 100vh;
+  width:100vw;
+  position: absolute; 
+  z-index: 20;
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadImgOverlay{
+  position: absolute;
+  padding: 6vw 1vw;
+  background-color: black;
+  border-radius: 50%;
 }
 
 /**** Header ****/
@@ -149,6 +173,30 @@
   width: 100vw;
   object-fit: cover;
   /* object-position: center; */
+}
+
+.customBg{
+  color: var(--color);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.customBg>h3{
+  margin-left: 0vw;
+  font-size: 1.3vw;
+}
+.customBg>input[type="file"]{
+  display: none;
+}
+.customBgLabel{
+  color: white;
+  padding: 0.2vw 2vw;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+.customBgLabel:hover{
+  background-color: white;
+  color: black;
 }
 
 /**** Sidebar ****/

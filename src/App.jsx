@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import Chats from './Chats'
+import Loader from './Loader'
 import './App.css'
 import {icons,themes} from './Data'
 
@@ -40,23 +41,41 @@ function App() {
 
     clickedWallpaper.forEach((img) => {
       img.addEventListener('click', (e) => {
-        if (e.target.className == "theme3") {
-          setSidColor(false)
-        }
-        else {
+        // if (e.target.className == "theme3") {
+          // setSidColor(false)
+        // }
+        // else {
           setSidColor(true)
-        }
+        // }
         setDark(true)
         setCurrentWallpaper(e.target.src);
         first.current.style.display = "block"
       })
     })
-
+    
   }, [])
 
+    const customWall = (e) =>{
+      const file = e.target.files[0];
 
+      const fileReader = new FileReader();
+
+      fileReader.onloadend = () =>{
+        setCurrentWallpaper(fileReader.result);
+      }
+      
+      fileReader.readAsDataURL(file);
+      
+      setDark(true)
+      first.current.style.display = "block"
+      setSidColor(true)
+    }
+  
+  
   return (
     <>
+    <Loader/>
+
                                 {/* Header */}
 
       {/*  <div className='glassEffectHeader'></div>  */}
@@ -81,6 +100,12 @@ function App() {
                 <img src={themes.theme1} alt="" className='theme1' />
                 <img src={themes.theme2} alt="" className='theme2' />
                 <img src={themes.theme3} alt="" className='theme3' />
+              </div>
+
+              <div className='customBg'>
+                <h3>Custom Background: </h3> 
+                <label htmlFor="customUpload" className='customBgLabel'> Upload </label>
+                <input type='file' accept='image/*' id='customUpload' onChange={customWall}/>
               </div>
             </div>
 
@@ -117,68 +142,68 @@ function App() {
    {/*  <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
         <div className='miniMenuTabs'>
           <img
-            title="Chat History"
-            onClick={() => {
-              setMenu("Chat History");
-              setToggle(true);
+          title="Chat History"
+          onClick={() => {
+            setMenu("Chat History");
+            setToggle(true);
             }}
             onMouseEnter={() => {
               const newIcons = [...miniIcons];
               newIcons[0] = false;  
               setMiniIcons(newIcons);  
-            }}
-            onMouseLeave={() => {
-              const newIcons = [...miniIcons];
-              newIcons[0] = true;
-              setMiniIcons(newIcons);
-            }}
-            src={miniIcons[0] ? icons.imgHistory : icons.imgHistoryBlack}
-            className="miniIcons"
-          />
-
-          <img
-            title="Chat Categories"
-            onClick={() => {
-              setMenu("Categories");
-              setToggle(true);
-            }}
-            onMouseEnter={() => {
-              const newIcons = [...miniIcons];
-              newIcons[1] = false;
-              setMiniIcons(newIcons);
-            }}
-            onMouseLeave={() => {
-              const newIcons = [...miniIcons];
-              newIcons[1] = true;
-              setMiniIcons(newIcons);
-            }}
-            src={miniIcons[1] ? icons.imgCatg : icons.imgCatgBlack}
-            className="miniIcons"
-          />
-
-          <img
+              }}
+              onMouseLeave={() => {
+                const newIcons = [...miniIcons];
+                newIcons[0] = true;
+                setMiniIcons(newIcons);
+                }}
+                src={miniIcons[0] ? icons.imgHistory : icons.imgHistoryBlack}
+                className="miniIcons"
+                />
+                
+                <img
+                title="Chat Categories"
+                onClick={() => {
+                  setMenu("Categories");
+                  setToggle(true);
+                  }}
+                  onMouseEnter={() => {
+                    const newIcons = [...miniIcons];
+                    newIcons[1] = false;
+                    setMiniIcons(newIcons);
+                    }}
+                    onMouseLeave={() => {
+                      const newIcons = [...miniIcons];
+                      newIcons[1] = true;
+                      setMiniIcons(newIcons);
+                      }}
+                      src={miniIcons[1] ? icons.imgCatg : icons.imgCatgBlack}
+                      className="miniIcons"
+                      />
+                      
+                      <img
             title="Archives"
             onClick={() => {
               setMenu("Archives");
               setToggle(true);
-            }}
-            onMouseEnter={() => {
+              }}
+              onMouseEnter={() => {
               const newIcons = [...miniIcons];
               newIcons[2] = false;
               setMiniIcons(newIcons);
-            }}
-            onMouseLeave={() => {
-              const newIcons = [...miniIcons];
-              newIcons[2] = true;
-              setMiniIcons(newIcons);
-            }}
-            src={miniIcons[2] ? icons.imgArchive : icons.imgArchiveBlack}
-            className="miniIcons"
-          />
-        </div>
-      </section>
-
-                                      {/* Main */}
+              }}
+              onMouseLeave={() => {
+                const newIcons = [...miniIcons];
+                newIcons[2] = true;
+                setMiniIcons(newIcons);
+                }}
+                src={miniIcons[2] ? icons.imgArchive : icons.imgArchiveBlack}
+                className="miniIcons"
+                />
+                </div>
+                </section>
+                
+                {/* Main */}
 
      <main className={`${dark ? "" : "lightMode"}`}>
         <img src={currentWallpaper} alt="" className="appliedWallpaper" ref={first}/>

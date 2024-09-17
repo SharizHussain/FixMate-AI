@@ -11,9 +11,9 @@ import imgArchiveBlack from './assets/img/archive_black.svg'
 
 import sunImg from './assets/img/sun.png'
 import sunImgLight from './assets/img/sunLight.png'
-import theme1 from './assets/img/dark-theme-background-8xlni5mkdutatc7r.jpg'
-import theme2 from './assets/img/photo-1557626204-59dd03fd2d31.jpeg'
-import theme3 from './assets/img/pexels-pripicart-620337.jpg'
+import theme1 from './assets/img/High_resolution_wallpaper_background_ID_77700334166.jpg'
+import theme2 from './assets/img/dark-theme-background-8xlni5mkdutatc7r.jpg'
+import theme3 from './assets/img/laptop-backgrounds-nature-images-1920x1200-wallpaper-preview.jpg'
 
 const icons = {
     aiIcon: aiIcon,
