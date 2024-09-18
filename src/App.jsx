@@ -14,10 +14,11 @@ function App() {
   const first = useRef("")
   const [sidColor, setSidColor] = useState(true);
   const [miniIcons, setMiniIcons] = useState([true, true, true]);
+  const [input,setInput] = useState("");
 
   
                         // Toggle mechanism for Back button in sidebar menu 
-                        // by default back button is not visible but when someone click
+                        // by default, back button is not visible but when someone click
                         // on any menuTabs then back button will visible
   useEffect(() => {
     const currentMenu = document.querySelector('.currentMenu')
@@ -52,7 +53,7 @@ function App() {
         first.current.style.display = "block"
       })
     })
-    
+
   }, [])
 
     const customWall = (e) =>{
@@ -82,7 +83,7 @@ function App() {
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
           {/* <img src={icons.aiIcon} alt="icon" className='icon' /> */}
-          <img src={icons.logo} alt="title" className='title' />
+          <img src={icons.logo} alt="title" className={`title ${toggle ? "" : "mainInputTrans"}`} />
         </div>
 
         <div className='navRight'>
@@ -134,81 +135,22 @@ function App() {
           </>
         }
 
-        {/* <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button> */}
-      </section>
+        <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
 
                                   {/* Mini Sidebar */}
 
-   {/*  <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}>
-        <div className='miniMenuTabs'>
-          <img
-          title="Chat History"
-          onClick={() => {
-            setMenu("Chat History");
-            setToggle(true);
-            }}
-            onMouseEnter={() => {
-              const newIcons = [...miniIcons];
-              newIcons[0] = false;  
-              setMiniIcons(newIcons);  
-              }}
-              onMouseLeave={() => {
-                const newIcons = [...miniIcons];
-                newIcons[0] = true;
-                setMiniIcons(newIcons);
-                }}
-                src={miniIcons[0] ? icons.imgHistory : icons.imgHistoryBlack}
-                className="miniIcons"
-                />
+     {/* <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}> */}
+            {/* <div className={`curveMiniSidebar ${toggle ? "" : "miniSidebarCome"}`}></div> */}
+     {/* </section> */}
+
+      </section>
                 
-                <img
-                title="Chat Categories"
-                onClick={() => {
-                  setMenu("Categories");
-                  setToggle(true);
-                  }}
-                  onMouseEnter={() => {
-                    const newIcons = [...miniIcons];
-                    newIcons[1] = false;
-                    setMiniIcons(newIcons);
-                    }}
-                    onMouseLeave={() => {
-                      const newIcons = [...miniIcons];
-                      newIcons[1] = true;
-                      setMiniIcons(newIcons);
-                      }}
-                      src={miniIcons[1] ? icons.imgCatg : icons.imgCatgBlack}
-                      className="miniIcons"
-                      />
-                      
-                      <img
-            title="Archives"
-            onClick={() => {
-              setMenu("Archives");
-              setToggle(true);
-              }}
-              onMouseEnter={() => {
-              const newIcons = [...miniIcons];
-              newIcons[2] = false;
-              setMiniIcons(newIcons);
-              }}
-              onMouseLeave={() => {
-                const newIcons = [...miniIcons];
-                newIcons[2] = true;
-                setMiniIcons(newIcons);
-                }}
-                src={miniIcons[2] ? icons.imgArchive : icons.imgArchiveBlack}
-                className="miniIcons"
-                />
-                </div>
-                </section>
-                
-                {/* Main */}
+                                  {/* Main */}
 
      <main className={`${dark ? "" : "lightMode"}`}>
         <img src={currentWallpaper} alt="" className="appliedWallpaper" ref={first}/>
 
-        <div className='chatArea'>
+        <div className={`chatArea ${toggle ? "" : "mainInputTrans"}`}>
 
         <div className='question_in_chat'>
             <img src="" alt="" />
@@ -225,8 +167,8 @@ function App() {
           </div>
 
         </div>
+        <textarea name="" id="" onChange={(e)=>setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input==="" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea>
 
-        <textarea name="" id="" className={`mainInput ${toggle ? "" : "mainInputTrans"}`} placeholder='Type your query here....'></textarea>
       </main>
 
                                     {/* Footer*/}

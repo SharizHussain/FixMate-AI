@@ -86,6 +86,7 @@
   margin: 0 0 0 0;
   left: 0;
   border-radius: 5px;
+  transition: transform 0.5s;
 }
 
 .header>.navRight {
@@ -207,7 +208,7 @@
   width: 18vw;
   margin: 0.5vw 0 0 2vw;
   background-color: var(--sidebar-background-color);
-  border: 1px solid var(--color);
+  /* border: 1px solid var(--color); */
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -217,7 +218,7 @@
 }
 
 .sidebarOff {
-  margin-left: -15vw;
+  margin-left: -20vw;
 }
 
 .sidebar>img {
@@ -283,36 +284,39 @@
 }
 
 .sidebarToggle {
-  position: absolute;
+  position: fixed;
   z-index: 11;
   height: 2.5vw;
-  width: 5.5vw;
+  width: 4vw;
   font-variant-caps: petite-caps;
   border: none;
   border-radius: 20px;
   /* padding: 1vw 1vw; */
-  margin: 26vw 0 0 18vw;
+  margin: 44vw 0 0 -12vw;
   background-color: #3f8f3c;
+  transition: 1s;
 }
 
 .sidebarToggleOff {
   background-color: rgb(202, 23, 23);
+  transform: translateX(20vw);
 }
 
 .sidebarToggle>div {
-  height: 2vw;
-  width: 2vw;
+  height: 1.8vw;
+  width: 1.8vw;
   background-color: black;
   border-radius: 50%;
   border: 2px solid black;
-  margin: 0 0 0 3vw;
+  margin: 0 0 0 1.8vw;
   transition: 1s;
 }
 
 .toggleOff {
-  transform: translateX(-2.9vw);
+  transform: translateX(-2vw);
   transition: 1s;
 }
+
 
 .glassEffect {
   position: absolute;
@@ -379,39 +383,33 @@
 }
 
 /**** Mini Sidebar ****/
-.miniSidebar {
+/* .miniSidebar {
   position: absolute;
   z-index: 1;
   height: 100vh;
-  width: 6vw;
-  background-color: black;
-  margin: 0 0 0 -6vw;
+  width: 5vw;
+  background-color: transparent;
+  backdrop-filter: blur(100px);
+  left: 0;
+  margin-left: -10vw;
   transition: 1s;
 }
 
 .miniSidebarCome {
-  border-right: 5px solid #03346E;
-  margin: 0vw;
+  margin-left: 12vw;
 }
 
-.miniMenuTabs {
-  display: flex;
-  flex-direction: column;
-  margin: 2vw 0 0 1vw;
-  gap: 3vw;
-}
+.curveMiniSidebar{
+  position: absolute;
+  z-index: -1;
+  height: 25vw;
+  width: 10vw;
+  backdrop-filter: blur(100px);
+  left: 0;
+  margin: 12vw 0 0 -3vw;
+  border-radius: 20px;
+} */
 
-.miniMenuTabs>img {
-  cursor: pointer;
-  width: 4vw;
-  transition: 0.3s;
-  border-radius: 50%;
-}
-
-.miniMenuTabs>img:hover{
-  border-radius: 0%;
-  background-color: white;
-}
 
 /**** Main ****/
 
@@ -428,20 +426,21 @@ main {
 }
 
 .chatArea{
-  border: 1px solid var(--color);
+  /* border: 1px solid var(--color); */
   border-radius: 20px;
   height: 45vw;
   width: 72vw;
   margin: 0.2vw 0 0 23%;
   backdrop-filter: blur(100px);
+  transition: transform 0.5s;
 }
 
 .mainInput {
   position: absolute;
-  width: 72.2vw;
+  width: 70vw;
   height: 3vw;
   bottom: 1.5%;
-  margin-left: 22%;
+  margin-left: 23.1%;
   font-size: 1.2vw;
   background-color: transparent;
   color: var(--color);
@@ -449,11 +448,16 @@ main {
   border-radius: 20px;
   border: 1px solid var(--color);
   resize: none;
-  transition: 1s ease-in-out;
+  transition: margin-left 1s ease-in-out;
+  transition: transform 0.5s;
+}
+.inputFocused{
+  backdrop-filter: blur(100px);
 }
 
 .mainInputTrans {
-  margin-left: 17%;
+  transition: 0.5s;
+  transform: translateX(-9vw);
 }
 
 .question_in_chat{
