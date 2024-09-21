@@ -1,4 +1,3 @@
-import aiIcon from './assets/img/artificial-intelligence.png'
 import logo from './assets/img/Screenshot from 2024-09-17 00-32-34.png'
 import backBtnImg from './assets/img/undo.png'
 import imgHistory from './assets/img/chat(1).svg'
@@ -16,7 +15,6 @@ import theme2 from './assets/img/dark-theme-background-8xlni5mkdutatc7r.jpg'
 import theme3 from './assets/img/laptop-backgrounds-nature-images-1920x1200-wallpaper-preview.jpg'
 
 const icons = {
-    aiIcon: aiIcon,
     logo: logo,
     backBtnImg: backBtnImg,
     imgHistory: imgHistory,

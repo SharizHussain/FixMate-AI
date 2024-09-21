@@ -2,24 +2,27 @@ import { useEffect, useState, useRef } from 'react'
 import Chats from './Chats'
 import Loader from './Loader'
 import './App.css'
-import {icons,themes} from './Data'
+import { icons, themes } from './Data'
 
 function App() {
-                          // All States initialized
+  // All States initialized
 
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
   const [currentWallpaper, setCurrentWallpaper] = useState(themes.theme1);
-  const first = useRef("")
+  const theme = useRef("")
   const [sidColor, setSidColor] = useState(true);
   const [miniIcons, setMiniIcons] = useState([true, true, true]);
-  const [input,setInput] = useState("");
+  const [input, setInput] = useState("");
+  const [isCursorBg, setIsCursorBg] = useState(false)
+  const cursorRef = useRef("");
+  const cursorRefSecond = useRef("");
 
-  
-                        // Toggle mechanism for Back button in sidebar menu 
-                        // by default, back button is not visible but when someone click
-                        // on any menuTabs then back button will visible
+
+  // Toggle mechanism for Back button in sidebar menu 
+  // by default, back button is not visible but when someone click
+  // on any menuTabs then back button will visible
   useEffect(() => {
     const currentMenu = document.querySelector('.currentMenu')
     const back = document.querySelector('.sidebar>img')
@@ -35,7 +38,7 @@ function App() {
     }
   }, [menu])
 
-                      // Theme wallpapers change mechanism
+  // Theme wallpapers change mechanism
 
   useEffect(() => {
     const clickedWallpaper = document.querySelectorAll('.wallpapers img')
@@ -43,46 +46,52 @@ function App() {
     clickedWallpaper.forEach((img) => {
       img.addEventListener('click', (e) => {
         // if (e.target.className == "theme3") {
-          // setSidColor(false)
+        // setSidColor(false)
         // }
         // else {
-          setSidColor(true)
+        setSidColor(true)
         // }
         setDark(true)
         setCurrentWallpaper(e.target.src);
-        first.current.style.display = "block"
+        theme.current.style.display = "block"
+        setIsCursorBg(false)
       })
     })
 
   }, [])
 
-    const customWall = (e) =>{
-      const file = e.target.files[0];
+  const customWall = (e) => {
+    const file = e.target.files[0];
 
-      const fileReader = new FileReader();
+    const fileReader = new FileReader();
 
-      fileReader.onloadend = () =>{
-        setCurrentWallpaper(fileReader.result);
-      }
-      
-      fileReader.readAsDataURL(file);
-      
-      setDark(true)
-      first.current.style.display = "block"
-      setSidColor(true)
+    fileReader.onloadend = () => {
+      setCurrentWallpaper(fileReader.result);
     }
-  
-  
+
+    fileReader.readAsDataURL(file);
+
+    setDark(true)
+    theme.current.style.display = "block"
+    setSidColor(true)
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    cursorRef.current.style.marginLeft = e.clientX + "px"
+    cursorRef.current.style.marginTop = e.clientY + "px"
+    cursorRefSecond.current.style.marginLeft = e.clientX - 300 + "px"
+    cursorRefSecond.current.style.marginTop = e.clientY + 30 + "px"
+  })
+
+  let timeout;
   return (
     <>
-    <Loader/>
+      <Loader/>
 
-                                {/* Header */}
+      {/* Header */}
 
-      {/*  <div className='glassEffectHeader'></div>  */}
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
-          {/* <img src={icons.aiIcon} alt="icon" className='icon' /> */}
           <img src={icons.logo} alt="title" className={`title ${toggle ? "" : "mainInputTrans"}`} />
         </div>
 
@@ -93,9 +102,9 @@ function App() {
 
             <div className='themeMenu'>
               <div className='themeModes'>
-                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none"); first.current.style.display="none"}}>Dark</div>
-                <div onClick={() => { setDark(false); setSidColor(false); setCurrentWallpaper("none") }}>Light</div>
-                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper(themes.theme1); first.current.style.display="block"}}>Reset</div>
+                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper("none"); theme.current.style.display = "none"; setIsCursorBg(true) }}>Dark</div>
+                <div onClick={() => { setDark(false); setSidColor(false); setCurrentWallpaper("none"); setIsCursorBg(true) }}>Light</div>
+                <div onClick={() => { setDark(true); setSidColor(true); setCurrentWallpaper(themes.theme1); theme.current.style.display = "block"; setIsCursorBg(false) }}>Reset</div>
               </div>
               <div className='wallpapers'>
                 <img src={themes.theme1} alt="" className='theme1' />
@@ -104,74 +113,82 @@ function App() {
               </div>
 
               <div className='customBg'>
-                <h3>Custom Background: </h3> 
+                <h3>Custom Background: </h3>
                 <label htmlFor="customUpload" className='customBgLabel'> Upload </label>
-                <input type='file' accept='image/*' id='customUpload' onChange={customWall}/>
+                <input type='file' accept='image/*' id='customUpload' onChange={customWall} />
               </div>
             </div>
 
           </div>
-          <div className='profile'></div> 
+          <div className='profile'></div>
         </div>
       </header>
 
-                                  {/* Sidebar */}
- 
-      <section className={`sidebar ${dark ? '' : "lightMode"} ${toggle ? "" : "sidebarOff"}`}>
-        <img src={icons.backBtnImg} alt="" className='backBtn' onClick={() => setMenu("Menu")} />
-        <div className={`currentMenu ${dark ? "" : "lightMode"} ${sidColor ? "" : "lightMode"}`}> {menu} </div>
+      {/* Sidebar */}
 
-        {
-          <>
-            {menu === "Menu" ?
-              <div className={`menuTabs ${sidColor ? "" : "lightMode"}`}>
-                <div className='menus' onClick={() => setMenu("Chat History")}> <img src={icons.imgHistory} alt="" className='icons' /> <span> Chat History </span> </div>
-                <div className='menus' onClick={() => setMenu("Categories")}> <img src={icons.imgCatg} alt="" className='icons' /> <span> Chat Categories </span> </div>
-                <div className='menus' onClick={() => setMenu("Archives")}> <img src={icons.imgArchive} alt="" className='icons' /> <span> Archives </span></div>
-              </div>
-              :
-              <Chats prop={menu} />
-            }
-          </>
-        }
+      <section className={`sidebarWrap ${toggle ? "" : "sidebarOff"}`}>
 
-        <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
+        <section className={`sidebar ${dark ? '' : "lightMode"}`} onMouseMove={() => { isCursorBg ? cursorRef.current.style.display = "block" : cursorRef.current.style.display = "none" }}>
 
-                                  {/* Mini Sidebar */}
+          <img src={icons.backBtnImg} alt="" className='backBtn' onClick={() => setMenu("Menu")} />
+          <div className={`currentMenu ${dark ? "" : "lightMode"} ${sidColor ? "" : "lightMode"}`}> {menu} </div>
 
-     {/* <section className={`miniSidebar ${toggle ? "" : "miniSidebarCome"} ${dark ? "" : "lightMode"}`}> */}
-            {/* <div className={`curveMiniSidebar ${toggle ? "" : "miniSidebarCome"}`}></div> */}
-     {/* </section> */}
+          {
+            <>
+              {menu === "Menu" ?
+                <div className={`menuTabs ${sidColor ? "" : "lightMode"}`}>
+                  <div className='menus' onClick={() => setMenu("Chat History")}> <img src={icons.imgHistory} alt="" className='icons' /> <span> Chat History </span> </div>
+                  <div className='menus' onClick={() => setMenu("Categories")}> <img src={icons.imgCatg} alt="" className='icons' /> <span> Chat Categories </span> </div>
+                  <div className='menus' onClick={() => setMenu("Archives")}> <img src={icons.imgArchive} alt="" className='icons' /> <span> Archives </span></div>
+                </div>
+                :
+                <Chats prop={menu} />
+              }
+            </>
+          }
 
+
+        </section>
+        <div className='cursorBg' ref={cursorRef}></div>
       </section>
-                
-                                  {/* Main */}
+      <button className={`sidebarToggle`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
 
-     <main className={`${dark ? "" : "lightMode"}`}>
-        <img src={currentWallpaper} alt="" className="appliedWallpaper" ref={first}/>
+      {/* Main */}
 
-        <div className={`chatArea ${toggle ? "" : "mainInputTrans"}`}>
+      <main className={`${dark ? "" : "lightMode"}`}>
+        <img src={currentWallpaper} alt="" className="appliedWallpaper" ref={theme} />
 
-        <div className='question_in_chat'>
-            <img src="" alt="" />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nobis iusto id voluptatibus nesciunt molestiae asperiores repellendus laudantium dolores doloremque provident deserunt veniam, amet vitae maiores eligendi? Distinctio, est a.
-            </p>
+        <div className={`chatAreaWrap ${toggle ? "" : "mainInputTrans"}`}>
+
+          <div className={`chatArea`} onMouseMove={() => {
+            clearTimeout(timeout); isCursorBg ? cursorRefSecond.current.style.display = "block" : cursorRefSecond.current.style.display = "none"; timeout = setTimeout(() => {
+              cursorRefSecond.current.style.display = "none"
+            }, 2500);
+          }}>
+
+
+            <div className='question_in_chat'>
+              <img src="" alt="" />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nobis iusto id voluptatibus nesciunt molestiae asperiores repellendus laudantium dolores doloremque provident deserunt veniam, amet vitae maiores eligendi? Distinctio, est a.
+              </p>
+            </div>
+
+            <div className='answer_in_chat'>
+              <img src="" alt="" />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. Minus labore repellat quia, dolorem nam explicabo temporibus quo officiis?
+              </p>
+            </div>
+
           </div>
-
-           <div className='answer_in_chat'>
-            <img src="" alt="" />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. Minus labore repellat quia, dolorem nam explicabo temporibus quo officiis?
-            </p>
-          </div>
-
+          <div className='cursorBgChat' ref={cursorRefSecond}></div>
         </div>
-        <textarea name="" id="" onChange={(e)=>setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input==="" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea>
+        <textarea name="" id="" onChange={(e) => setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea>
 
       </main>
 
-                                    {/* Footer*/}
+      {/* Footer*/}
       {/* <footer></footer> */}
     </>
   )
