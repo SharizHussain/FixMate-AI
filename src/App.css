@@ -247,6 +247,15 @@
   transition: 1s;
   backdrop-filter: blur(100px);
 }
+.sidebar::-webkit-scrollbar{
+  background-color: transparent;
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb{
+  cursor: pointer;
+  background-color: rgb(99, 98, 98);
+  border-radius: 20px;
+}
 
 .sidebarOff {
   margin-left: -20vw;
@@ -466,6 +475,15 @@ main {
   /* margin: 0.2vw 0 0 23%; */
   backdrop-filter: blur(100px);
   transition: transform 0.5s;
+}
+.chatArea::-webkit-scrollbar{
+  background-color: transparent;
+  width: 5px;
+}
+.chatArea::-webkit-scrollbar-thumb{
+  cursor: pointer;
+  background-color: rgb(99, 98, 98);
+  border-radius: 20px;
 }
 
 .mainInput {
