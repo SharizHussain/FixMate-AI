@@ -17,10 +17,10 @@ function App() {
   const [input, setInput] = useState("");
   const [isCursorBg, setIsCursorBg] = useState(false)
   const cursorRef = useRef("");
-  const cursorRefSecond = useRef("");
+  const cursorRefChat = useRef("");
 
 
-  // Toggle mechanism for Back button in sidebar menu 
+  // Toggle mechanism for Back button in sidebar menu.
   // by default, back button is not visible but when someone click
   // on any menuTabs then back button will visible
   useEffect(() => {
@@ -49,8 +49,8 @@ function App() {
         // setSidColor(false)
         // }
         // else {
-        setSidColor(true)
         // }
+        setSidColor(true)
         setDark(true)
         setCurrentWallpaper(e.target.src);
         theme.current.style.display = "block"
@@ -79,14 +79,20 @@ function App() {
   window.addEventListener('mousemove', (e) => {
     cursorRef.current.style.marginLeft = e.clientX + "px"
     cursorRef.current.style.marginTop = e.clientY + "px"
-    cursorRefSecond.current.style.marginLeft = e.clientX - 300 + "px"
-    cursorRefSecond.current.style.marginTop = e.clientY + 30 + "px"
+    if(toggle){
+      cursorRefChat.current.style.marginLeft = e.clientX - 300 + "px"
+      cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
+    }
+    else{
+      cursorRefChat.current.style.marginLeft = e.clientX - 180 + "px"
+      cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
+    }
   })
 
   let timeout;
   return (
     <>
-      <Loader/>
+      <Loader />
 
       {/* Header */}
 
@@ -151,7 +157,7 @@ function App() {
         </section>
         <div className='cursorBg' ref={cursorRef}></div>
       </section>
-      <button className={`sidebarToggle`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
+      <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
 
       {/* Main */}
 
@@ -161,8 +167,8 @@ function App() {
         <div className={`chatAreaWrap ${toggle ? "" : "mainInputTrans"}`}>
 
           <div className={`chatArea`} onMouseMove={() => {
-            clearTimeout(timeout); isCursorBg ? cursorRefSecond.current.style.display = "block" : cursorRefSecond.current.style.display = "none"; timeout = setTimeout(() => {
-              cursorRefSecond.current.style.display = "none"
+            clearTimeout(timeout); isCursorBg ? cursorRefChat.current.style.display = "block" : cursorRefChat.current.style.display = "none"; timeout = setTimeout(() => {
+              cursorRefChat.current.style.display = "none"
             }, 2500);
           }}>
 
@@ -182,7 +188,7 @@ function App() {
             </div>
 
           </div>
-          <div className='cursorBgChat' ref={cursorRefSecond}></div>
+          <div className='cursorBgChat' ref={cursorRefChat}></div>
         </div>
         <textarea name="" id="" onChange={(e) => setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea>
 

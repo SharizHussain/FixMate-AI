@@ -328,7 +328,6 @@
 
 .sidebarToggleOff {
   background-color: rgb(202, 23, 23);
-  transform: translateX(20vw);
 }
 
 .sidebarToggle>div {
