@@ -6,10 +6,23 @@ export default function Chats({ prop }) {
     { title: "Hello Moto", description: "hakjfkjaskjfkjaskdfj" },
     { title: "Who is Dr. Doom", description: 'ailsdjflkjasdklfj' },
     { title: "Tell me about Js", description: "ladkjfljaslfjlask" },
+    { title: "Who is known as Bhaijaan", description: 'ailsdjflkjasdklfj' },
+    { title: "Hello Moto", description: "hakjfkjaskjfkjaskdfj" },
+    { title: "Who is Dr. Doom", description: 'ailsdjflkjasdklfj' },
+    { title: "Tell me about Js", description: "ladkjfljaslfjlask" },
+    { title: "Who is known as Bhaijaan", description: 'ailsdjflkjasdklfj' },
+    { title: "Hello Moto", description: "hakjfkjaskjfkjaskdfj" },
+    { title: "Who is Dr. Doom", description: 'ailsdjflkjasdklfj' },
+    { title: "Tell me about Js", description: "ladkjfljaslfjlask" },
     { title: "Who is known as Bhaijaan", description: 'ailsdjflkjasdklfj' }
   ]);
 
-  const [dummyCatgs, setDummyCatgs] = useState([{ img: "", title: "College" }, { img: "", title: "Cooking" }, { img: "", title: "Movie" }, { img: "", title: "Web" }])
+  const [dummyCatgs, setDummyCatgs] = useState([
+    { img: "", title: "College" },
+    { img: "", title: "Cooking" },
+    { img: "", title: "Movie" },
+    { img: "", title: "Web" }
+  ])
   return (
     <>
       {
