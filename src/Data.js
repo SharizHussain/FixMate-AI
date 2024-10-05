@@ -1,4 +1,5 @@
 import logo from './assets/img/Screenshot from 2024-09-17 00-32-34.png'
+import profileImg from './assets/img/user.png'
 import backBtnImg from './assets/img/undo.png'
 import imgHistory from './assets/img/chat(1).svg'
 import imgCatg from './assets/img/menu.svg'
@@ -16,11 +17,12 @@ import theme3 from './assets/img/laptop-backgrounds-nature-images-1920x1200-wall
 
 const icons = {
     logo: logo,
+    profileImg: profileImg,
+
     backBtnImg: backBtnImg,
     imgHistory: imgHistory,
     imgCatg: imgCatg,
     imgArchive: imgArchive,
-
     imgHistoryBlack: imgHistoryBlack,
     imgCatgBlack: imgCatgBlack,
     imgArchiveBlack: imgArchiveBlack

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import Chats from './Chats'
+import Chats from './components/Chats'
 import Loader from './Loader'
 import './App.css'
 import { icons, themes } from './Data'
@@ -76,14 +76,15 @@ function App() {
     setSidColor(true)
   }
 
+  // Mouse Follower //
   window.addEventListener('mousemove', (e) => {
     cursorRef.current.style.marginLeft = e.clientX + "px"
     cursorRef.current.style.marginTop = e.clientY + "px"
-    if(toggle){
+    if (toggle) {
       cursorRefChat.current.style.marginLeft = e.clientX - 300 + "px"
       cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
     }
-    else{
+    else {
       cursorRefChat.current.style.marginLeft = e.clientX - 180 + "px"
       cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
     }
@@ -94,7 +95,7 @@ function App() {
     <>
       <Loader />
 
-      {/* Header */}
+      {/* Header / Navbar */}
 
       <header className={`header ${dark ? "" : "lightMode"}`}>
         <div className='navLeft'>
@@ -126,7 +127,9 @@ function App() {
             </div>
 
           </div>
-          <div className='profile'></div>
+          <div className='profile'>
+            <img src={icons.profileImg} alt="" className='profileImg' />
+          </div>
         </div>
       </header>
 
@@ -152,12 +155,11 @@ function App() {
               }
             </>
           }
-
-
         </section>
         <div className='cursorBg' ref={cursorRef}></div>
       </section>
       <button className={`sidebarToggle ${toggle ? "" : "sidebarToggleOff"}`} onClick={() => setToggle(!toggle)}><div className={`toggleBtn ${toggle ? "" : "toggleOff"}`}></div></button>
+
 
       {/* Main */}
 
@@ -184,10 +186,14 @@ function App() {
               <img src="" alt="" />
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. Minus labore repellat quia, dolorem nam explicabo temporibus quo officiis?
-                <br /><br /><hr /><br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. 
-                <br /><br /><hr /><br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. 
+              </p>
+              <br /><br /><hr /><br />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti.
+              </p>
+              <br /><br /><hr /><br />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti.
               </p>
             </div>
 

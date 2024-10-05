@@ -1,0 +1,241 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+@font-face {
+    font-family: chato;
+    src: url('/fonts/Sixtyfour_Convergence/SixtyfourConvergence-Regular-VariableFont_BLED\,SCAN\,XELA\,YELA.ttf');
+}
+
+.authParent {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* Global container styling */
+.auth-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bg-img {
+    position: absolute;
+    z-index: -10;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    animation: bgImgAnimate 5s linear infinite;
+}
+
+@keyframes bgImgAnimate {
+    from {
+        filter: hue-rotate(0);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.logo-container {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.logo {
+    font-size: 5vw;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 2px white;
+    font-weight: bolder;
+    background-image: radial-gradient(#8F025C, rgb(73, 2, 80), rgb(65, 5, 175), rgb(212, 0, 255));
+    /* text-transform: uppercase; */
+    animation: animateLogo 20s linear infinite;
+    transition: 2s;
+}
+
+@keyframes animateLogo {
+    0% {
+        background-position: 0;
+    }
+
+    50% {
+        background-position: 100vw;
+    }
+
+    100% {
+        background-position: 0vw;
+    }
+}
+
+/* Featured Section */
+.featured {
+    position: absolute;
+    padding: 1.25rem;
+    height: 35vw;
+    width: 55.5vw;
+    overflow: hidden;
+    margin-top: 8.5vw;
+    margin-left: 3rem;
+    border-radius: 1rem;
+    background: conic-gradient(green, red, green, purple, green);
+}
+
+.slide {
+    position: absolute;
+    left: 0.5rem;
+    top: 1%;
+    height: 96.5%;
+    width: 54vw;
+    border-radius: 1rem;
+
+}
+
+.slide-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 4px solid white;
+    border-radius: 1rem;
+}
+
+.slide-title {
+    font-size: 3rem;
+    margin-top: 3vw;
+    margin-left: 3vw;
+    color: white;
+    text-transform: uppercase;
+    font-family: chato;
+}
+
+.slide-text {
+    color: white;
+    width: 30vw;
+    margin-top: 2vw;
+    margin-left: 5vw;
+    line-height: 140%;
+}
+
+.ai-assistant {
+    text-transform: uppercase;
+    background-color: rgb(207, 216, 226);
+    color: #FF413B;
+    padding: 0.25rem 0.25rem;
+    border-radius: 0.5rem;
+}
+
+#sl1 {
+    margin-left: 0vw;
+}
+
+#sl2 {
+    margin-left: 1.5vw;
+}
+
+#sl3 {
+    margin-left: 3vw;
+}
+
+.slideBtnLeft,
+.slideBtnRight {
+    border-radius: 50%;
+}
+
+/* Login/Signup Form */
+.login-container {
+    position: absolute;
+    border: 2px solid white;
+    backdrop-filter: blur(30px);
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    border-radius: 2rem;
+    width: 25vw;
+    height: 35vw;
+    right: 7vw;
+    top: 9.5vw;
+}
+
+.user-icon {
+    font-size: 5vw;
+    color: #FF413B;
+}
+
+.auth-title {
+    position: absolute;
+    font-size: 2vw;
+    color: white;
+    margin-top: 6vw;
+    font-family: chato;
+}
+
+.auth-input {
+    position: absolute;
+    margin-top: 10vw;
+    width: 18vw;
+    height: 3vw;
+    padding: 0vw 0.5vw;
+    /* border-radius: 2rem; */
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.auth-input::placeholder{
+    font-size: 1.2vw;
+    color: white;
+}
+
+.password-input {
+    margin-top: 14vw;
+}
+
+.auth-switch-text {
+    position: absolute;
+    color: white;
+    margin-top: 18vw;
+    left: 2vw;
+}
+
+.switch-link {
+    margin-left: 0.5rem;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Slide Buttons */
+.slide-btn {
+    position: absolute;
+    background-color: rgb(227, 234, 241);
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.slideBtnLeft {
+    margin-left: 65%;
+    margin-top: 30%;
+}
+
+.slideBtnRight {
+    margin-left: 74%;
+    margin-top: 30%;
+}
+
+.arrow-icon {
+    color: purple;
+}

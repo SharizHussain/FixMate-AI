@@ -108,16 +108,32 @@
 }
 
 .header>.navRight {
+  display: flex;
+  align-items: center;
   position: absolute;
   height: 4vw;
   width: 12%;
-  /* background-color: red; */
-  margin-left: 85%;
+  margin-left: 75%;
 }
 
+.theme{
+  margin: 1vw 0 0 2vw;
+  
+}
 .sun {
   cursor: pointer;
-  margin: 1vw 0 0 2vw;
+  width: 1.8vw;
+  padding: 10px;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+}
+
+.profile{
+  margin: 1vw 0 0 1vw;
+  z-index: -1;
+}
+.profileImg{
+  cursor: pointer;
   width: 1.8vw;
   padding: 10px;
   border-radius: 50%;
