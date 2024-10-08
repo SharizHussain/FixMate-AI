@@ -252,8 +252,8 @@
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 3;
-  height: 48vw;
-  width: 18vw;
+  height: inherit;
+  width: inherit;
   background-color: transparent;
   /* border: 1px solid var(--color); */
   border-radius: 20px;
@@ -274,7 +274,7 @@
 }
 
 .sidebarOff {
-  margin-left: -20vw;
+  margin-left: -40vw;
 }
 
 .sidebar>img {
@@ -380,14 +380,49 @@
 }
 
 .chatTitles {
+  cursor: pointer;
   text-align: left;
   height: 2vw;
+  width: 15vw;
   padding: 1vw;
   color: var(--color);
+  overflow: hidden;
+}
+.chatTitles>span:nth-child(1){
+  position: absolute;
+  height: 2vw;
+  width: 13vw;
+}
+.chatTitles>span:nth-child(2){
+  cursor: pointer;
+  position: absolute;
+  right: 1.5vw;
+  top: 0.8vw;
+  padding-bottom: 1vw;
 }
 
 .chatTitles:hover {
-  background-color: #03346E;
+  background-color: white;
+  border-radius: 20px;
+  color: black;
+}
+.chatTitles>span:hover:nth-child(2){
+  scale: 1.5;
+}
+
+.deleteChatFocused{
+  position: absolute;
+  color: red;
+  border: 1px solid red;
+  background-color: black;
+  display: none;
+  margin: -1vw 0 0 -13.5vw;
+  z-index: 11;
+  width: 15vw;
+  height: 2vw;
+  padding: 1vw;
+  text-align: center;
+  font-size: 1.5w;
 }
 
 /**** Chat Categories ****/
@@ -402,12 +437,13 @@
 }
 
 .chatCatgs {
+  cursor: pointer;
   position: relative;
   height: 5vw;
   width: 7vw;
   border-radius: 20px;
   background-color: lightblue;
-  margin: 1vw;
+  margin: 2vw 1vw;
   text-align: center;
 }
 
@@ -486,8 +522,8 @@ main {
   overflow-y: auto;
   z-index: 3;
   border-radius: 20px;
-  height: 45vw;
-  width: 72vw;
+  height: inherit;
+  width: inherit;
   /* margin: 0.2vw 0 0 23%; */
   backdrop-filter: blur(100px);
   transition: transform 0.5s;
@@ -528,7 +564,7 @@ main {
 }
 
 .question_in_chat{
-  position: absolute;
+  position: relative;
   z-index: 1111;
   height: fit-content;
   width: 50vw;
@@ -538,7 +574,7 @@ main {
   padding: 1vw 1vw;;
   border-radius: 30px;
   text-align: center;
-  font-size: large;
+  font-size: 1.4vw;
 }
 
 .answer_in_chat{
@@ -547,7 +583,7 @@ main {
   height: fit-content;
   width: 50vw;
   color: var(--color);
-  margin: 20vw 0 0 2vw;
+  margin: 2vw 0 0 2vw;
   padding: 1vw 1vw;;
   border-radius: 30px;
   font-size: large;

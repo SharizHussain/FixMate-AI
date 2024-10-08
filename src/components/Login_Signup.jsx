@@ -24,9 +24,9 @@ export default function Login_Signup() {
       opacity: 0
     });
 
-    tl.to('.login-container', {
+    tl.from('.login-container', {
       delay: 0.8,
-      opacity: 1,
+      opacity: 0,
     });
 
     tl.to('.login-container', {

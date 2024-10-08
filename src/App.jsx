@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import Chats from './components/Chats'
 import Loader from './Loader'
 import './App.css'
+import './AppMobile.css'
 import { icons, themes } from './Data'
 
 function App() {
@@ -10,6 +11,14 @@ function App() {
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
+  useEffect(()=>{
+    if(window.innerWidth<=780){
+      setToggle(false)
+    }
+    else{
+      setToggle(true)
+    }
+  },[])
   const [currentWallpaper, setCurrentWallpaper] = useState(themes.theme1);
   const theme = useRef("")
   const [sidColor, setSidColor] = useState(true);
@@ -76,11 +85,12 @@ function App() {
     setSidColor(true)
   }
 
-  // Mouse Follower //
-  window.addEventListener('mousemove', (e) => {
-    cursorRef.current.style.marginLeft = e.clientX + "px"
-    cursorRef.current.style.marginTop = e.clientY + "px"
-    if (toggle) {
+  useEffect(()=>{
+    // Mouse Follower //
+    window.addEventListener('mousemove', (e) => {
+      cursorRef.current.style.marginLeft = e.clientX + "px"
+      cursorRef.current.style.marginTop = e.clientY + "px"
+      if (toggle) {
       cursorRefChat.current.style.marginLeft = e.clientX - 300 + "px"
       cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
     }
@@ -89,6 +99,8 @@ function App() {
       cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
     }
   })
+
+})
 
   let timeout;
   return (

@@ -1,0 +1,162 @@
+@media (max-width:780px) {
+
+    .loadImg{
+        width: 95vw;
+    }
+    .loadImgOverlay{
+        padding: 13vw 0;
+        width: 40vw;
+    }
+
+    .header {
+        height: 10vw;
+    }
+
+    .navLeft>.title {
+        width: 30vw;
+        margin-left: -11vw;
+    }
+
+    .header>.navRight {
+        margin-left: 50%;
+    }
+
+    .sun {
+        height: 6vw;
+        width: 6vw;
+        /* background-color: red; */
+    }
+
+    .profileImg {
+        width: 6vw;
+    }
+
+    .backBtn{
+        height: 9vw !important;
+        width: 7vw !important;
+
+    }
+    .currentMenu {
+        font-size: 4vw;
+    }
+
+    .menuTabs {
+        font-size: 5vw;
+        margin-top: 10vw;
+        height: 40vw;
+        gap: 5vw;
+    }
+
+    .menuTabs>div>span {
+        margin-left: 10vw;
+    }
+
+    .icons {
+        width: 7vw;
+    }
+
+    .sidebarWrap {
+        height: 95vh;
+        width: 55vw;
+        margin-left: -0.8vw;
+        /* margin-top: 5vw; */
+    }
+
+    .sidebarOff {
+        margin-left: -60vw
+    }
+
+    .sidebarToggle {
+        margin-top: 1.5vh;
+        margin-left: 50vw;
+        height: 5vw;
+        width: 10vw;
+    }
+
+    .sidebarToggleOff {
+        margin-left: 1.5vw;
+    }
+
+    .sidebarToggle>div {
+        height: 4vw;
+        width: 4vw;
+        margin-left: 4.4vw;
+    }
+
+    .toggleOff {
+        transform: translateX(-3.5vw);
+    }
+
+
+    .mainInputTrans {
+        transform: translateX(0vw);
+    }
+
+    .chatAreaWrap {
+        margin-top: 5vw;
+        height: 82vh;
+        width: 97vw;
+        margin-left: 1vw;
+    }
+
+    .question_in_chat {
+        font-size: 4vw;
+        line-height: 5vw;
+        width: 90%;
+        margin-left: 6.2vw;
+    }
+
+    .answer_in_chat {
+        font-size: 4vw;
+        line-height: 5vw;
+        width: 95%;
+
+    }
+
+    .mainInput {
+        position: relative;
+        height: 10vw;
+        font-size: 3.5vw;
+        top: 85.5vh;
+        width: 90%;
+        margin-left: 2vw;
+    }
+
+    .themeMenu {
+        height: 40vw;
+        width: 55vw;
+        margin: -5vw 0 0 -35vw;
+        padding: 0 1vw;
+    }
+
+    .wallpapers>img {
+        width: 15vw;
+        height: 15vw;
+    }
+    .customBg>h3{
+        font-size: 3vw;
+    }
+
+    .chatTitles{
+        width: 45vw;
+        height: 5vw;
+        margin-top: 2vw;
+    }
+    .chatTitles>span:nth-child(1){
+        width: 40vw;
+    }
+
+    .deleteChatFocused{
+        margin: -1vw 0 0 -35.5vw;
+        width: 40vw;
+        height: 5vw;
+        padding: 1vw;
+        text-align: center;
+        font-size: 1.5w;
+      }
+
+      .chatCatgs{
+        width: 25vw;
+        height: 15vw;
+      }
+}
