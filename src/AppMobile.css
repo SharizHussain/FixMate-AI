@@ -113,14 +113,35 @@
 
     }
 
-    .mainInput {
+    /* .mainInput {
         position: relative;
         height: 10vw;
         font-size: 3.5vw;
         top: 85.5vh;
         width: 90%;
         margin-left: 2vw;
+    } */
+
+    form textarea.mainInput {
+        position: relative;
+        height: 10vw;
+        font-size: 3.5vw;
+        top: 88.5vh;
+        width: 90%;
+        margin-left: 11.1%;
     }
+
+    form input[type="submit"].querySubmit {
+        top: 83.5vh;
+        float: right;
+        margin-right: 0vw;
+    }
+
+    /* form img.rightCircular {
+        top: 83.5vh;
+        float: right;
+        margin-right: 0vw;
+    } */
 
     .themeMenu {
         height: 40vw;
