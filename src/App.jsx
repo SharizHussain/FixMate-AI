@@ -3,10 +3,7 @@ import Chats from './components/Chats'
 import Loader from './Loader'
 import './App.css'
 import './AppMobile.css'
-import './CodeSnippets.css'
 import { icons, themes } from './Data'
-// importing runSemanticSearch function from fetchGeminiContent.js 
-import runSemanticSearch from "../api/fetchGeminiContent";
 
 function App() {
   // All States initialized
@@ -14,14 +11,14 @@ function App() {
   const [dark, setDark] = useState(true);
   const [menu, setMenu] = useState("Menu");
   const [toggle, setToggle] = useState(true);
-  useEffect(() => {
-    if (window.innerWidth <= 780) {
+  useEffect(()=>{
+    if(window.innerWidth<=780){
       setToggle(false)
     }
-    else {
+    else{
       setToggle(true)
     }
-  }, [])
+  },[])
   const [currentWallpaper, setCurrentWallpaper] = useState(themes.theme1);
   const theme = useRef("")
   const [sidColor, setSidColor] = useState(true);
@@ -31,11 +28,6 @@ function App() {
   const cursorRef = useRef("");
   const cursorRefChat = useRef("");
 
-  // state for form submission
-  let [text, setText] = useState('');
-
-  // state for gemini response
-  let [geminiResponse, setGeminiResponse] = useState({}); 
 
   // Toggle mechanism for Back button in sidebar menu.
   // by default, back button is not visible but when someone click
@@ -93,57 +85,22 @@ function App() {
     setSidColor(true)
   }
 
-  useEffect(() => {
+  useEffect(()=>{
     // Mouse Follower //
     window.addEventListener('mousemove', (e) => {
       cursorRef.current.style.marginLeft = e.clientX + "px"
       cursorRef.current.style.marginTop = e.clientY + "px"
       if (toggle) {
-        cursorRefChat.current.style.marginLeft = e.clientX - 300 + "px"
-        cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
-      }
-      else {
-        cursorRefChat.current.style.marginLeft = e.clientX - 180 + "px"
-        cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
-      }
-    })
-
+      cursorRefChat.current.style.marginLeft = e.clientX - 300 + "px"
+      cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
+    }
+    else {
+      cursorRefChat.current.style.marginLeft = e.clientX - 180 + "px"
+      cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
+    }
   })
 
-
-  // Code Copy //
-  useEffect(() => {
-    const copyButton = document.querySelector('.copy-button');
-
-    copyButton.addEventListener('submit', () => {
-      const codeText = document.querySelector('.code').textContent;
-      navigator.clipboard.writeText(codeText);
-
-      // Provide visual feedback that the task is completed
-      copyButton.textContent = 'Copied!';
-      setTimeout(() => {
-        copyButton.textContent = 'Copy';
-      }, 700);
-    });
-  })
-
-  
-  // Handling form submission and fetching content from fetchGeminiContent
-  async function handleSubmit(event) {
-    event.preventDefault();
-  
-    const queryText = document.getElementsByTagName('textarea').value;
-    // assigning textarea value value to text
-    text = queryText;
-    console.log(text);
-  
-    const response = await runSemanticSearch(text);
-    setGeminiResponse(response);
-    // assigning gemini response to geminiResponse 
-      geminiResponse = response;
-      console.log(geminiResponse);
-  }
-
+})
 
   let timeout;
   return (
@@ -232,52 +189,30 @@ function App() {
 
             <div className='question_in_chat'>
               <img src="" alt="" />
-              { /* Error Pasted */}
-              <p>{text}</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nobis iusto id voluptatibus nesciunt molestiae asperiores repellendus laudantium dolores doloremque provident deserunt veniam, amet vitae maiores eligendi? Distinctio, est a.
+              </p>
             </div>
 
             <div className='answer_in_chat'>
               <img src="" alt="" />
-              { /* Error Title */}
-              <h1 className='title'>{geminiResponse.title}</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti. Minus labore repellat quia, dolorem nam explicabo temporibus quo officiis?
+              </p>
               <br /><br /><hr /><br />
-              { /* Error Type */}
-              <h3 className='type'> Error Type: {geminiResponse.type}</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti.
+              </p>
               <br /><br /><hr /><br />
-              { /* Problem Definition Block */}
-              <p className='problemDefinition'>{geminiResponse.problemDefinition}</p>
-              <br /><br /><hr /><br />
-              { /* Problem Causes Block */}
-              <p className='problemCauses'>{geminiResponse.problemCauses}</p>
-              <br /><br /><hr /><br />
-              { /* Problem Solution Block */}
-              <p className='problemSolution' >{geminiResponse.problemSolution}</p>
-              <br /><br /><br />
-              { /* Code Snippet Block */}
-              <pre className='codeSnippets'>
-                <code className='code' >{geminiResponse.codeSnippets}</code>
-                <button className="copy-button" >Copy</button>
-              </pre>
-              <br /><br /><hr /><br />
-              { /* Embedded Links Block */}
-              {/* <a className='embeddedLink' href={geminiResponse.embeddedLinks[0]} target='_newtab' >{geminiResponse.embeddedLinks[0]}</a>
-              <a className='embeddedLink' href={geminiResponse.embeddedLinks[1]} target='_newtab' >{geminiResponse.embeddedLinks[1]}</a> */}
-              <br /><br /><hr /><br />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus id voluptates, quod maxime provident exercitationem? Nam vitae ab quam maiores. Aperiam modi architecto voluptatum voluptates numquam veniam minima obcaecati corporis aliquam, vel deleniti consectetur, quaerat quisquam, totam esse tempore labore fugit possimus quis praesentium. Laborum aliquid quis reiciendis, a quas temporibus facilis maiores nisi commodi error cum ipsa illo amet omnis obcaecati eaque corporis unde accusantium recusandae et iste assumenda beatae? Commodi, ipsum minus quasi quod sunt eum voluptatibus vero qui facilis aperiam numquam veritatis maxime ducimus vel labore corrupti.
+              </p>
             </div>
 
           </div>
           <div className='cursorBgChat' ref={cursorRefChat}></div>
         </div>
-        { /* Query Box */}
-        {/* <textarea name="" id="queryBox" onChange={(e) => setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea> */}
-        <div>
-          <form onSubmit={handleSubmit} className='queryForm' >
-            <textarea name="" id="queryBox" onChange={(e) => setInput(e.target.value) && setText(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} rows="3" placeholder='Type your query here....'></textarea>
-            <input type="submit" id='' value="send" onChange={(e) => setInput(e.target.value)} className={`querySubmit ${toggle ? "" : "mainInputTrans"}`} />
-          </form>
-
-        </div>
-
+        <textarea name="" id="" onChange={(e) => setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea>
 
       </main>
 
