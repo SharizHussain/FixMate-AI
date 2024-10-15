@@ -1,0 +1,108 @@
+[
+  {
+    "title": "Missing Semicolon",
+    "type": "SyntaxError",
+    "error": [
+      "SyntaxError: Missing semicolon after statement (at line 10, col 5)"
+    ],
+    "problemDefinition": "A syntax error occurs when there's a violation of the language's grammatical rules. In this case, a semicolon is missing after a statement, which can prevent the code from executing properly.",
+    "problemCauses": "Missing semicolon: This is the most common cause of this error. Ensure you have a semicolon terminating each complete statement.\nExtra semicolon: While less frequent, having an extra semicolon at the end of a block or before an opening curly brace can also cause syntax errors. Remove any unnecessary semicolons.",
+    "problemSolution": "Review the line number and column mentioned in the error message to locate the missing semicolon. Insert the missing semicolon after the relevant statement.\nDouble-check your code for any extra semicolons that might be causing issues.",
+    "codeSnippets": "// Here's an example of a missing semicolon:\nlet x = 5\nif (x > 3)// Missing semicolon here\nconsole.log(\"x is greater than 3\");",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/semicolon",
+      "https://www.w3schools.com/js/js_errors.asp"
+    ]
+  },
+  {
+    "title": "Variable Not Defined",
+    "type": "ReferenceError",
+    "error": [
+      "ReferenceError: myVariable is not defined (at line 15, col 2)"
+    ],
+    "problemDefinition": "A reference error occurs when you try to use a variable that has not been declared or is declared outside of its scope. This can lead to the interpreter not knowing what the variable refers to.",
+    "problemCauses": "Undeclared variable: This is the most common cause. Ensure you declare a variable using `let`, `const`, or `var` before using it.\nVariable scope issue: If you're using a variable declared within a block (like an if statement) and trying to access it outside the block, you'll encounter a reference error. Declare the variable in a broader scope if needed.",
+    "problemSolution": "Declare the variable using `let`, `const`, or `var` before using it.\nIf the error is due to scope, adjust the variable's declaration location to a more appropriate scope.",
+    "codeSnippets": "// Here's an example of a variable not defined:\nconsole.log(myVariable); // Error: myVariable is not defined\nlet myVariable = 10; // Declare the variable here",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let",
+      "https://www.javascript.com/docs/可怕的 ReferenceError.html"
+    ]
+  },
+  {
+    "title": "Incompatible Data Types",
+    "type": "TypeError",
+    "error": [
+      "TypeError: Cannot add string and number (at line 8, col 3)"
+    ],
+    "problemDefinition": "A type error happens when you attempt to perform an operation on values with incompatible data types. For example, trying to add a string and a number can cause this error.",
+    "problemCauses": "Mixing data types: Performing operations on different data types, like adding a string and a number, can lead to type errors. Ensure your operations are compatible with the data types involved.\nImplicit type conversion: JavaScript sometimes tries to convert types automatically. This can lead to unexpected results and errors if not handled correctly.",
+    "problemSolution": "Explicitly convert data types using methods like `parseInt()` or `parseFloat()` when necessary.\nReview your code and ensure operations are performed on compatible data types.",
+    "codeSnippets": "// Here's an example of a type error:\nlet message = \"Hello, world!\";\nlet age = 25;\nconsole.log(message + age); // Error: Cannot add string and number",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Types/typeof",
+      "https://www.tutorialspoint.com/es6/es6_type_coercion"
+    ]
+  },
+  {
+    "title": "Array Index Out of Bounds",
+    "type": "RangeError",
+    "error": [
+      "RangeError: Maximum call stack exceeded (at line 12, col 1)"
+    ],
+    "problemDefinition": "A range error occurs when you try to access an element in an array or object using an index or key that is outside of the valid range. This can happen when the index or key is negative or larger than the maximum allowed value.",
+    "problemCauses": "Incorrect index or key: Ensure you're using the correct index or key to access elements in arrays or objects. The index or key should be a non-negative integer and less than the length of the array or object.\nInfinite recursion: If you have a function that calls itself recursively without a proper termination condition, it can lead to a stack overflow error, which is a type of range error.",
+    "problemSolution": "Double-check your index or key values to ensure they are within the valid range.\nIf you're dealing with recursive functions, make sure they have a base case to prevent infinite recursion.",
+    "codeSnippets": "// Here's an example of an array index out of bounds error:\nconst myArray = [1, 2, 3];\nconsole.log(myArray[4]); // Error: Array index out of bounds",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "https://www.w3schools.com/jsref/jsref_length.asp"
+    ]
+  },
+  {
+    "title": "Invalid URI",
+    "type": "URIError",
+    "error": [
+      "URIError: Malformed URI (at line 7, col 2)"
+    ],
+    "problemDefinition": "A URI error occurs when you try to create or parse a URI (Uniform Resource Identifier) that is not in the correct format. This can happen due to missing components, invalid characters, or other syntax errors.",
+    "problemCauses": "Incorrect URI syntax: Ensure that your URI follows the correct format, including the scheme (e.g., http, https), hostname, path, and query parameters.\nInvalid characters: Certain characters are not allowed in URIs. Make sure you're using valid characters and escaping special characters as needed.",
+    "problemSolution": "Review the URI in your code and ensure it adheres to the correct syntax.\nEscape any special characters that might be causing issues.",
+    "codeSnippets": "// Here's an example of an invalid URI error:\nconst url = 'http://example.com#'; // Error: Malformed URI",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+      "https://www.w3schools.com/jsref/jsref_urierror.asp"
+    ]
+  },
+  {
+    "title": "Invalid Eval Argument",
+    "type": "EvalError",
+    "error": [
+      "EvalError: Illegal character (at line 5, col 10)"
+    ],
+    "problemDefinition": "An eval error occurs when you use the `eval()` function with an invalid argument. The `eval()` function is used to execute a string of JavaScript code, but it can be dangerous and should be used with caution. If the argument passed to `eval()` contains invalid syntax or is not a valid JavaScript expression, it will throw an eval error.",
+    "problemCauses": "Invalid argument: Ensure that the argument passed to `eval()` is a valid JavaScript expression.\nSecurity risks: Using `eval()` can introduce security vulnerabilities. Consider alternative approaches if possible.",
+    "problemSolution": "Avoid using `eval()` if possible, as it can be a security risk. If you must use it, ensure the argument is a valid JavaScript expression.",
+    "codeSnippets": "// Here's an example of an eval error:\nconst code = 'let x = 10; return x;';\nconsole.log(eval(code)); // Valid\nconsole.log(eval('return;')); // Error: Illegal character",
+    "embeddingsLinks": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval",
+      "https://www.w3schools.com/jsref/jsref_eval.asp"
+    ]
+  },
+  {
+    "title": "Dotenv.config Not a Function",
+    "type": "TypeError",
+    "error": [
+      "TypeError: dotenv.configg is not a function"
+    ],
+    "problemDefinition": "The error `TypeError: dotenv.config is not a function` indicates that the dotenv module is not configured correctly, and the `config()` method is not available. This method is used to load environment variables from a `.env` file into the `process.env object`.",
+    "problemCauses": "Incorrect dotenv version: Ensure you are using a compatible version of dotenv. The `config()` method was introduced in dotenv version 5.0.0. If you’re using an earlier version, upgrade to a newer one.\nMissing require statement: Make sure you’ve properly required the dotenv module at the top of your JavaScript file: `const dotenv = require('dotenv');`\nIncorrect usage: Verify that you’re using the `config()` method correctly. It should be called as a function, without parentheses: `require('dotenv').config();`",
+    "problemSolution": "Upgrade dotenv version: Run `npm install dotenv@latest` or `yarn add dotenv@latest` to ensure you’re using a compatible version.\nVerify require statement: Double-check that you’ve correctly required the dotenv module.\nCorrect usage: Ensure you’re calling `config()` as a function without parentheses: `require('dotenv').config();`\nCheck `.env` file path: If you’re providing a custom `.env` file path, ensure it’s correct and accessible.",
+    "codeSnippets": "//Here’s an example of correct usage:\nconst dotenv = require('dotenv');\ndotenv.config({ path: './config/.env' }); // specify custom path",
+    "embeddingsLinks": [
+      "https://stackoverflow.com/questions/55271926/dotenv-load-is-not-a-function-while-trying-to-run-a-node-script",
+      "https://newbe.dev/dotenv-config-is-not-a-function-code-example"
+    ]
+  }
+  
+]
