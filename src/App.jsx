@@ -141,8 +141,9 @@ function App() {
   async function handleSubmit(event) {
     event.preventDefault();
   
-    const queryText = document.getElementsByTagName('textarea').value;
-    // assigning textarea value value to text
+    const queryText = document.getElementById('queryBox').value;
+    setText(queryText);
+    // assigning textarea value to text
     text = queryText;
     console.log(text);
   
