@@ -32,10 +32,10 @@ function App() {
   const cursorRefChat = useRef("");
 
   // state for form submission
-  let [text, setText] = useState('');
+  const [text, setText] = useState('');
 
   // state for gemini response
-  let [geminiResponse, setGeminiResponse] = useState({}); 
+  const [geminiResponse, setGeminiResponse] = useState({});
 
   // Toggle mechanism for Back button in sidebar menu.
   // by default, back button is not visible but when someone click
@@ -108,15 +108,15 @@ function App() {
       }
     }
 
-    if(cursorRef){
+    if (cursorRef && cursorRefChat) {
       // Mouse Follower //
       window.addEventListener('mousemove', handleMouseMove)
-  }
+    }
 
-  return () => {
-    window.removeEventListener('mousemove', handleMouseMove);
-  };
-    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+
   })
 
 
@@ -136,21 +136,21 @@ function App() {
     });
   })
 
-  
+
   // Handling form submission and fetching content from fetchGeminiContent
   async function handleSubmit(event) {
     event.preventDefault();
-  
-    const queryText = document.getElementsByTagName('textarea').value;
+
+    const queryText = text;
     // assigning textarea value value to text
-    text = queryText;
-    console.log(text);
-  
-    const response = await runSemanticSearch(text);
+    // text = queryText;
+    // console.log(text);
+
+    const response = await runSemanticSearch(queryText);
     setGeminiResponse(response);
     // assigning gemini response to geminiResponse 
-      geminiResponse = response;
-      console.log(geminiResponse);
+    // geminiResponse = response;
+    console.log(geminiResponse);
   }
 
 
@@ -282,7 +282,7 @@ function App() {
         <div>
           <form onSubmit={handleSubmit} className='queryForm' >
             <textarea name="" id="queryBox" onChange={(e) => setInput(e.target.value) && setText(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} rows="3" placeholder='Type your query here....'></textarea>
-            <input type="submit" id='' value="send" onChange={(e) => setInput(e.target.value)} className={`querySubmit ${toggle ? "" : "mainInputTrans"}`} />
+            <input type="submit" id='' value="send" className={`querySubmit ${toggle ? "" : "mainInputTrans"}`} />
           </form>
 
         </div>

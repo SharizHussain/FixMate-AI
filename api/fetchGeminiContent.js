@@ -1,5 +1,5 @@
 // Fetching content from Cosmocloud and using Gemini for scan relevent document related query
-// and for Prompt Design or to Train modal 
+// and for Prompt Design or to Train modal
 
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 const projectId = import.meta.env.VITE_APP_PROJECT_ID;
