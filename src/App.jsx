@@ -94,8 +94,8 @@ function App() {
   }
 
   useEffect(() => {
-    // Mouse Follower //
-    window.addEventListener('mousemove', (e) => {
+
+    const handleMouseMove = (e) => {
       cursorRef.current.style.marginLeft = e.clientX + "px"
       cursorRef.current.style.marginTop = e.clientY + "px"
       if (toggle) {
@@ -106,8 +106,17 @@ function App() {
         cursorRefChat.current.style.marginLeft = e.clientX - 180 + "px"
         cursorRefChat.current.style.marginTop = e.clientY + 30 + "px"
       }
-    })
+    }
 
+    if(cursorRef){
+      // Mouse Follower //
+      window.addEventListener('mousemove', handleMouseMove)
+  }
+
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+  };
+    
   })
 
 
