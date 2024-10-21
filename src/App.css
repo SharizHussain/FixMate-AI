@@ -32,6 +32,24 @@
   padding: 0;
 }
 
+.loading{
+  display: none;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  z-index: 1111;
+  margin-top: 40vh;
+  margin-left: 50vw;
+  border: 10px dotted red;
+  border-radius: 50%;
+  animation: animateLoading 4s linear infinite;
+}
+@keyframes animateLoading {
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 .cursorBg {
   position: absolute;
   display: none;

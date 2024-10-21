@@ -27,6 +27,7 @@ function App() {
   const [sidColor, setSidColor] = useState(true);
   const [miniIcons, setMiniIcons] = useState([true, true, true]);
   const [input, setInput] = useState("");
+  const [question, setQuestion] = useState("")
   const [isCursorBg, setIsCursorBg] = useState(false)
   const cursorRef = useRef("");
   const cursorRefChat = useRef("");
@@ -141,12 +142,17 @@ function App() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    document.querySelector('.loading').style.display = "block"
+
+    setQuestion(text);
     const queryText = text;
     // assigning textarea value value to text
     // text = queryText;
-    // console.log(text);
+    console.log(queryText);
 
     const response = await runSemanticSearch(queryText);
+    document.querySelector('.loading').style.display = "none"
+
     setGeminiResponse(response);
     // assigning gemini response to geminiResponse 
     // geminiResponse = response;
@@ -158,6 +164,8 @@ function App() {
   return (
     <>
       <Loader />
+
+      <div className='loading'></div>
 
       {/* Header / Navbar */}
 
@@ -240,9 +248,8 @@ function App() {
 
 
             <div className='question_in_chat'>
-              <img src="" alt="" />
               { /* Error Pasted */}
-              <p>{text}</p>
+              <p>{question}</p>
             </div>
 
             <div className='answer_in_chat'>
@@ -281,7 +288,14 @@ function App() {
         {/* <textarea name="" id="queryBox" onChange={(e) => setInput(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} placeholder='Type your query here....'></textarea> */}
         <div>
           <form onSubmit={handleSubmit} className='queryForm' >
-            <textarea name="" id="queryBox" onChange={(e) => setInput(e.target.value) && setText(e.target.value)} className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} rows="3" placeholder='Type your query here....'></textarea>
+            <textarea name="" id="queryBox" onChange={(e) => setText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault()
+                  handleSubmit(e)
+                }
+              }}
+              className={`mainInput ${toggle ? "" : "mainInputTrans"} ${input === "" ? "" : "inputFocused"}`} rows="3" placeholder='Type your query here....'></textarea>
             <input type="submit" id='' value="send" className={`querySubmit ${toggle ? "" : "mainInputTrans"}`} />
           </form>
 

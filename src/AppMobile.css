@@ -106,6 +106,13 @@
         margin-left: 6.2vw;
     }
 
+    .question_in_chat>p{
+        position: absolute;
+        z-index: 111;
+        color: white;
+        background-color: red;
+    }
+
     .answer_in_chat {
         font-size: 4vw;
         line-height: 5vw;
