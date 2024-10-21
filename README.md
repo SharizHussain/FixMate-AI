@@ -8,6 +8,20 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # FixMate-AI
 
+Fixmate is a Gemini API-integrated chatbot designed to help developers by providing reference solutions and resolving syntax errors. The solutions are stored in MongoDB, making it easy for users to query and retrieve relevant error messages and fixes.
+Features
+
+    Syntax and reference error solutions.
+    AI-powered chatbot functionality.
+    Data stored and fetched from MongoDB.
+
+Technologies Used
+
+    Frontend: React.js (using Vite)
+    Backend: Node.js, Express.js
+    Database: MongoDB
+    API Integration: Gemini API
+
 
 What you need:
 
