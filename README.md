@@ -9,6 +9,19 @@ Currently, two official plugins are available:
 # FixMate-AI
 
 Fixmate is a Gemini API-integrated chatbot designed to help developers by providing reference solutions and resolving syntax errors. The solutions are stored in MongoDB, making it easy for users to query and retrieve relevant error messages and fixes.
+
+# What you need:
+
+create a .env file and add: 
+1. VITE_APP_API_KEY: the-gemini-api-key-here
+2. VITE_APP_PROJECT_ID: project-id
+3. VITE_APP_ENVIRONMENT_ID: environment-id
+
+Steps for Users:
+
+1. npm install
+2. npm run dev
+
  # Features
 
 * Syntax and reference error solutions  
@@ -22,16 +35,3 @@ Fixmate is a Gemini API-integrated chatbot designed to help developers by provid
 * Backend: Cosmocloud, Node.js, Express.js  
 * Database: MongoDB  
 * API Integration: Gemini API.  
- ---
-
-What you need:
-
-create a .env file and add: 
-1. VITE_APP_API_KEY: the-gemini-api-key-here
-2. VITE_APP_PROJECT_ID: project-id
-3. VITE_APP_ENVIRONMENT_ID: environment-id
-
-Steps for Users:
-
-1. npm install
-2. npm run dev
