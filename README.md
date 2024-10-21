@@ -22,6 +22,7 @@ Fixmate is a Gemini API-integrated chatbot designed to help developers by provid
 * Backend: Cosmocloud, Node.js, Express.js  
 * Database: MongoDB  
 * API Integration: Gemini API.  
+ ---
 
 What you need:
 
