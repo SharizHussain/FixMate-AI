@@ -7,3 +7,16 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # FixMate-AI
+
+
+What you need:
+
+create a .env file and add: 
+1. VITE_APP_API_KEY: the-gemini-api-key-here
+2. VITE_APP_PROJECT_ID: project-id
+3. VITE_APP_ENVIRONMENT_ID: environment-id
+
+Steps for Users:
+
+1. npm install
+2. npm run dev
