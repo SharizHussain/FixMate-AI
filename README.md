@@ -1,14 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # FixMate-AI
 
-Fixmate is a Gemini API-integrated chatbot designed to help developers by providing reference solutions and resolving syntax errors. The solutions are stored in MongoDB, making it easy for users to query and retrieve relevant error messages and fixes.
+Fixmate is a error solution tool to help developers to fix their error by providing error solutions related different type of programming languages, Command Line Tools(Specially for Git), Frameworks and Libraries, and different types of Low code or No Code Tools. Just paste error you faced in query box get your Solution.
 
 # What you need:
 
@@ -17,21 +9,32 @@ create a .env file and add:
 2. VITE_APP_PROJECT_ID: project-id
 3. VITE_APP_ENVIRONMENT_ID: environment-id
 
-Steps for Users:
-
+## Steps for Installing in a Local Repo:
 1. npm install
 2. npm run dev
 
  # Features
 
-* Syntax and reference error solutions  
-* Code Snippets  
-* AI-powered chatbot functionality  
-* Data stored and fetched from MongoDB  
+* Providing error solutions related different type of programming languages, Command Line Interface Tools(Specially for Git), Frameworks and Libraries, and different types of Low code or No Code Tools.  
+* Code Snippets will be given for error resolution.
+* Embedded Links for error resolution references.
+* Integrating support of Gemini API for better error solution.  
+* Utilizing Aggregation Pipelines for process data in a MongoDB collection.
+* Implementing Semantic Search Functionality for better search results through Cosmocloud(A Low code and No code Tool).
+* Generating Vector Indexes through Cosmocloud.
+* Adding support of Authentication in projects using OAuth and JWT Token. 
 
  # Technologies Used
 
-* Frontend: React.js (using Vite)  
-* Backend: Cosmocloud, Node.js, Express.js  
+* Module Bundler: Vite
+* Frontend: React.js, Vanilla CSS, & Tailwind CSS
+* Backend: Cosmocloud
+* API Integration: Gemini API 
 * Database: MongoDB  
-* API Integration: Gemini API.  
+* Authentication: OAuth and JWT Token
+* Deployment: AWS Amplify Hosting and Vercel
+
+# About Contributors and Maintainers
+
+* [Shariz Hussain](https://github.com/SharizHussain/) : Managing Frontend and Module Bundling for this project.
+* [Nehal Jain(thebraudalf)](https://github.com/thebraudalf/) : Managing Backend, API Integration, Database and Authentication for this project.
